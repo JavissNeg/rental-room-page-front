@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "rental-room-app:build:production"
+              "buildTarget": "rental-room-app:build:production"
             },
             "development": {
-              "browserTarget": "rental-room-app:build:development"
+              "buildTarget": "rental-room-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "rental-room-app:build"
+            "buildTarget": "rental-room-app:build"
           }
         },
         "test": {

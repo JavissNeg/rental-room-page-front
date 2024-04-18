@@ -8,21 +8,7 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
 
-    // nombre
-    
-    inmuebles : any[] = [
-        {
-            inmueble_id: 1,
-            precio : 1565
-        },
-    ];
-
-    public ejemplo : string = "hola mundo 1";
-
-    printMsg() {
-        
-    }       
+export class HomeComponent {       
 
 }

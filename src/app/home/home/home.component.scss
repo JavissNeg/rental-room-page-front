@@ -7,16 +7,19 @@
     list-style-type: none;
 }
 
-html {
-    scroll-behavior: smooth;
-}
 /*body{*/
     /*font-family: "Inter", sans-serif;*/
     /*font-family: "Mochiy Pop One", sans-serif;*/
     /*font-family: "Poppins", sans-serif;*/
 /*}*/
 
-.header{
+
+/*.header-content{
+    display: flex;
+    align-items: center;
+}*/
+
+.header-content{
     background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.1)),
     url(/assets/img_home.jpg);
     background-repeat: no-repeat;
@@ -31,48 +34,9 @@ html {
 }
 
 .container{
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
 }
-
-.menu{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-    margin: 40px auto 0 auto;
-}
-
-.logo{
-    font-size: 20px;
-    color: #F5F5F5;
-    font-weight: 800;
-}
-
-.menu .nav ul li{
-    position: relative;
-    float: left;
-}
-
-.menu .nav ul li a{
-    font-size: 15px;
-    padding: 20px;
-    color: #F5F5F5;
-}
-
-.menu .nav ul li a:hover{
-    color: #ecb142;
-    font-weight: 600;
-}
-
-/*.header-content{
-    display: flex;
-    align-items: center;
-}*/
 
 .header-text{
     text-align: center;
@@ -86,6 +50,18 @@ html {
     margin: 80px;
 }
 
+
+/*.header-img{
+    width: 35%;
+    text-align: right;
+}
+
+.header-img img{
+    width: 400px;
+    margin-top: 40px;
+}*/
+
+
 .btn-1{
     display: inline-block;
     padding: 10px 40px;
@@ -98,17 +74,9 @@ html {
     background-color: #d49d12;
 }
 
-/*.header-img{
-    width: 35%;
-    text-align: right;
-}
-
-.header-img img{
-    width: 400px;
-    margin-top: 40px;
-}*/
 
 /*------------------------------------------------------------------------------------------*/
+
 
 .rooms{
     padding: 110px 0;
@@ -128,6 +96,7 @@ html {
     grid-auto-rows: auto;
     grid-gap: 3rem;
     margin-top: 50px;
+    padding: 0 7%;
 }
 
 .room{

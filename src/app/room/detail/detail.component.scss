@@ -1,0 +1,120 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+}
+
+#container-principal{
+    height: 150vh;
+    background: #615e5e;
+    padding: 20px;
+}
+
+#container-carousel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px auto 40px auto;
+}
+
+.carousel{
+    position: relative;
+    width: 800px;
+    height: 400px;
+    background-color: #e0e0e0;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.66);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.carruseles{
+    width: 300%;
+    height: 100%;
+    display: flex;
+}
+
+.slider-section{
+    width: calc(100% / 3);
+    height: 100%;
+}
+
+.slider-section img{
+    width: 800px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.btn-left,
+.btn-right{
+    display: flex;
+    position: absolute;
+    top: 50%;
+    font-size: 1.5rem;
+    background-color: transparent;
+    border-radius: 50%;
+    padding: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #000000;
+    transform: translate(0,-50%);
+    transition: .5s ease;
+    user-select: none;
+}
+.btn-left:hover,
+.btn-right:hover{
+    background-color: #333333d4;
+    color: #000000;
+}
+
+.btn-left{
+    left: 10px;
+}
+
+.btn-right{
+    right: 10px;
+}
+#container-precio{
+    width: 300px;
+    height: 200px;
+    background-color: #e0e0e0;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.66);
+    border-radius: 15px;
+    margin-left: 30px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+.info-precio h2{
+    margin-bottom: 20px;
+}
+
+.btn{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #c99719d3;
+    color: #F5F5F5;
+    border-radius: 5px;
+}
+
+.btn:hover{
+    background-color: #d49d12;
+}
+
+.container-info-room {
+    display: flex;
+    justify-content: center;
+}
+
+.info-room {
+    font-size: 16px;
+    color: #e0e0e0;
+    width: 85%;
+    text-align: left;
+}
+.info-room p{
+    margin-bottom: 20px;
+}

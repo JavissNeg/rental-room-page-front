@@ -1,3 +1,9 @@
+*{
+    text-decoration: none;
+    list-style-type: none;
+    font-family: "Mochiy Pop One", sans-serif;
+}
+
 .container{
     max-width: 90%;
     margin: 0 auto;
@@ -12,7 +18,7 @@
     align-items: center;
     justify-content: space-between;
     z-index: 1000;
-    margin: 40px auto 0 auto;
+    margin: 20px auto 0 auto;
 }
 
 .logo{

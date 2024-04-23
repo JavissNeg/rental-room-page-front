@@ -13,12 +13,6 @@
     /*font-family: "Poppins", sans-serif;*/
 /*}*/
 
-
-/*.header-content{
-    display: flex;
-    align-items: center;
-}*/
-
 .header-content{
     background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.1)),
     url(/assets/img_home.jpg);
@@ -50,18 +44,6 @@
     margin: 80px;
 }
 
-
-/*.header-img{
-    width: 35%;
-    text-align: right;
-}
-
-.header-img img{
-    width: 400px;
-    margin-top: 40px;
-}*/
-
-
 .btn-1{
     display: inline-block;
     padding: 10px 40px;
@@ -73,10 +55,6 @@
 .btn-1:hover{
     background-color: #d49d12;
 }
-
-
-/*------------------------------------------------------------------------------------------*/
-
 
 .rooms{
     padding: 110px 0;
@@ -136,6 +114,7 @@
 .btn-2:hover{
     background-color: #d49d12;
 }
+
 .select-container {
     display: inline-block;
     justify-content: center;
@@ -171,10 +150,10 @@
 }
 .section-img{
     width: 35%;
-    
 }
 .section-img img{
     width: 450px;
+    text-align: center;
 }
 
 form{

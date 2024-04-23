@@ -1,1 +1,68 @@
-<p>detail works!</p>
+<div id="container-principal">
+
+    <div id="container-carousel">
+        <div class="carousel">
+            <div class="carruseles" id="slider">
+                <section class="slider-section">
+                    <img src="assets/ImgPrueba1.jpg" alt="">
+                </section>
+                <section class="slider-section">
+                    <img src="assets/ImgPrueba2.jpg" alt="">
+                </section>
+                <section class="slider-section">
+                    <img src="assets/ImgPrueba3.jpg" alt="">
+                </section>
+            </div>
+            <div class="btn-left"><i class='bx bxs-left-arrow'></i></div>
+            <div class="btn-right"><i class='bx bxs-right-arrow'></i></div>
+        </div>
+
+        <div id="container-precio">
+            <div class="info-precio">
+                <h2>$10,000</h2>
+                <a href="#" class="btn">Reservar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--User
+const btnLeft = document.querySelector(".btn-left"),
+      btnRight = document.querySelect(".btn-right"),
+      slider = document.querySelect("#slider"),
+      sliderSection = document.querySelectorAll(".slider-section");
+
+btnLeft.addEventListener("click", e => moveToLeft())
+btnRight.addEventListener("click", e => moveToRight())
+
+let operacion = 0,
+    counter = 0,
+    widthImg = 100 / sliderSection.length;
+funcion moveToRight(){
+    if(counter >= sliderSection.length-1){
+        counter = 0;
+        operacion = 0;
+        slider.style.transform = 'translate(-${operacion}%)';
+        slider.style.transition = "none"
+    }
+    else{
+        counter++;
+        operacion = operacion + widthImg;
+        slider.style.transform = 'translate(-${operacion}%)';
+        slider.style.transition = "all ease .6s" 
+    }
+}
+
+funcion moveToLeft(){
+    counter--;
+    if(counter < 0){
+        counter = sliderSection.length-1;
+        operacion = widthImg * (sliderSection.length-1)
+        slider.style.transform = 'translate(-${operacion}%)';
+        slider.style.transition = "none"
+    }else{
+        operacion = operacion - widthImg;
+        slider.style.transform = 'translate(-${operacion}%)';
+        slider.style.transition = "all ease .6s" 
+    }
+}-->

@@ -5,7 +5,11 @@ const routes: Routes = [
   {
     path: 'detail',
     loadComponent: () => import('./detail/detail.component').then(m => m.DetailComponent)
-  }
+  },
+  {
+    path: 'search',
+    loadComponent: () => import('./search/search.component').then(m => m.SearchComponent)
+  },
 ];
 
 @NgModule({

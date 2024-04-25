@@ -1,4 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
-body {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900');
+
+* {
     margin: 0;
+    font-family: "Mochiy Pop One", sans-serif;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+:root {
+    --bg-primary-light: #f9f9f9;
+
+    --form-bg-light: #ECD7A2;
+    
+    --button-bg-light: #c99719d3;
+    --button-bg-light-hover: #d49d12;
+    --button-color-light: #F5F5F5;
+    --button-color-light-hover: #c99719d3;
+
+    --p-color-light: #545454;
+    --label-color-light: #534F4F;
+    --h1-color-light: #F5F5F5;
+    --h3-color-light: #504f4f;
+    --h4-color-light: #534F4F;
+    
+
+    --bg-primary-dark: #333;
+    --bg-button-dark: #333;
+    --color-font-dark: #fff;
+}
+
+body.light-mode {
+    --bg-primary: var(--bg-primary-light);
+    --form-bg: var(--form-bg-light);
+    
+    --button-bg: var(--button-bg-light);
+    --button-bg-hover: var(--button-bg-light-hover);
+    --button-color: var(--button-color-light);
+    --button-color-hover: var(--button-color-light-hover);
+
+    --p-color: var(--p-color-light);
+    --label-color: var(--label-color-light);
+    --h1-color: var(--h1-color-light);
+    --h3-color: var(--h3-color-light);
+    --h4-color: var(--h4-color-light);
+}
+
+
+
+
+body.dark-mode {
+    --bg-primary: var(--bg-primary-dark);
+    --bg-button: var(--bg-button-dark);
+    --h1-color: var(--color-font-dark);
 }

@@ -1,25 +1,26 @@
-*{
-    text-decoration: none;
-    list-style-type: none;
-    font-family: "Mochiy Pop One", sans-serif;
+
+.bgInvisible {
+    position: absolute;
+    background-color: green($color: #000000);
 }
 
-.container{
-    max-width: 90%;
-    margin: 0 auto;
+.bgVisible {
+    position: static;
+    background-color: black;
 }
 
 .menu{
-    position: absolute;
     top: 0;
     left: 0;
     right: 0;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 1000;
-    margin: 20px auto 0 auto;
+    height: 4rem;
+    padding: 0 30px;
 }
+
 
 .logo{
     font-size: 20px;

@@ -1,11 +1,19 @@
-<header class="menu container">
+<header class="menu" [ngClass]="{
+    'bgVisible': bgVisible,
+    'bgInvisible': !bgVisible,
+}">
     <a href="#" class="logo">RentalSpace</a>
 
     <nav class="nav">
         <ul>
-            <li><a href="#">OPCIÓN 1</a></li>
-            <li><a href="#section">REGÍSTRATE</a></li>
-            <li><a href="../user/">INICIAR SESIÓN</a></li>
+            <li>
+                <a href="#">OPCIÓN 1</a>
+            </li>
+            <li>
+                <a routerLink="/user/register" >REGÍSTRATE</a></li>
+            <li>
+                <a routerLink="/user/login" >INICIAR SESIÓN</a>
+            </li>
         </ul>
     </nav>
 </header>

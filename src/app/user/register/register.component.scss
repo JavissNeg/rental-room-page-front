@@ -22,58 +22,68 @@
 
 form{
     background: var(--form-bg);
+    min-width: 500px;
     width: 50%;
     padding: 30px 50px;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
-}
+    align-items: center;
+    justify-content: center;
 
-form h4{
-    color: var(--h4-color);
-    font-size: 18px; 
-    text-align: center;
-    text-transform: uppercase;
-    padding: 0 0 40px 0;
-}
+    h4{
+        color: var(--h4-color);
+        font-size: 18px; 
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 5%;
+    }
 
-.form-group{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-gap: 20px;
-    margin-bottom: 40px;
-
-    .form-content{
-        display: flex;
-        flex-direction: column;
-
-        .cont-input-span {
+    .form-group{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(200px, .7fr));
+        grid-gap: 20px;
+        margin-bottom: 40px;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        
+        .form-content{
             display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-around;
-            background-color: var(--input-bg);
-            border-radius: 25px;
-            padding: 5px 10px;
-            color: var(--input-color);
-
-            input{
-                background-color: transparent;
-                border: 0;
-                outline: none;
-                font-size: 16px;
+            flex-direction: column;
+            width: 100%;
+    
+            .cont-input-span {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-around;
+                background-color: var(--input-bg);
+                border-radius: 25px;
+                padding: 5px 10px;
+                color: var(--input-color);
+                
+                input{
+                    background-color: transparent;
+                    border: 0;
+                    outline: none;
+                    font-size: 16px;
+                    width: 90%;
+                }
+                
+                span {
+                    margin-left: 1%;
+                    cursor: pointer;
+                }
             }
-            
-            span {
-                margin-left: 1%;
-                cursor: pointer;
-            }
+    
         }
-
+    
     }
 
 }
+
 
 
 label{

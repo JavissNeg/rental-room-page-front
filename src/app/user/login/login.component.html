@@ -1,1 +1,38 @@
-<p>login works!</p>
+<section class="section-content">
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h4>Inicia sesión</h4>
+        <div class="form-group">
+            
+            <div class="form-content">
+                <label for="mail">Correo electrónico</label>
+                <div class="cont-input-span"
+                    [@inputError]="loginForm.get('mail')?.touched && (loginForm.get('mail')?.invalid || loginForm.getError('nonExistent')) ? 'end' : 'start'">
+                    
+                    <input type="text" formControlName="mail">
+                    <span class="material-symbols-outlined"
+                        title="">help</span>
+                
+                </div>  
+            </div> 
+
+            <div class="form-content">
+                <label for="password">Contraseña</label>
+                <div class="cont-input-span"
+                    [@inputError]="loginForm.get('password')?.touched && (loginForm.get('password')?.invalid || loginForm.getError('nonExistent'))  ? 'end' : 'start'">
+                    
+                    <input type="text" formControlName="password">
+                    <span class="material-symbols-outlined">
+                        help
+                    </span>
+
+                </div>
+            </div>
+
+        </div>
+
+        <button class="btn-form" type="submit">Iniciar sesión</button>
+
+    </form>
+    
+</section>

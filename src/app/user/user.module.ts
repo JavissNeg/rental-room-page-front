@@ -11,10 +11,12 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     CommonModule,
     UserRoutingModule,
-    RegisterComponent
+    RegisterComponent,
   ],
   exports: [
     RegisterComponent
   ]
 })
-export class UserModule { }
+export class UserModule { 
+
+}

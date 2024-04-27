@@ -7,49 +7,99 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <h4>Registrate</h4>
         <div class="form-group">
+            
             <div class="form-content">
                 <label for="firstName">Nombre(s)</label>
-                <input type="text" formControlName="firstName">
-                <label *ngIf="registerForm.get('firstName')?.invalid">Errror</label>
+                <div class="cont-input-span"
+                    [@inputError]="registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid ? 'end' : 'start'">
+                    
+                    <input type="text" formControlName="firstName">
+                    <span class="material-symbols-outlined"
+                        title="">help</span>
+                
+                </div>
             </div> 
 
             <div class="form-content">
                 <label for="paternalSurname">Apellido Paterno</label>
-                <input type="text" formControlName="paternalSurname">
+                <div class="cont-input-span"
+                    [@inputError]="registerForm.get('paternalSurname')?.touched && registerForm.get('paternalSurname')?.invalid  ? 'end' : 'start'">
+                    
+                    <input type="text" formControlName="paternalSurname">
+                    <span class="material-symbols-outlined">
+                        help
+                    </span>
+
+                </div>
             </div>
 
             <div class="form-content">
                 <label for="maternalSurname">Apellido Materno</label>
-                <input type="text" formControlName="maternalSurname">
+                <div class="cont-input-span"
+                    [@inputError]="registerForm.get('maternalSurname')?.touched && registerForm.get('maternalSurname')?.invalid ? 'end' : 'start'">
+                    
+                    <input type="text" formControlName="maternalSurname">
+                    <span class="material-symbols-outlined">
+                        help
+                    </span>
+
+                </div>
             </div>
 
             <div class="form-content">
                 <label for="mail">Correo electronico</label>
-                <input type="email" formControlName="mail">
+                <div class="cont-input-span"
+                    [@inputError]="registerForm.get('mail')?.touched && registerForm.get('mail')?.invalid ? 'end' : 'start'">
+                    
+                    <input type="text" formControlName="mail">
+                    <span class="material-symbols-outlined">
+                        help
+                    </span>
+
+                </div>
             </div>
 
             <div class="form-content">
                 <label for="phone">Teléfono</label>
-                <input type="number" formControlName="phone">
-            </div>
+                <div class="cont-input-span"
+                    [@inputError]="registerForm.get('phone')?.touched && registerForm.get('phone')?.invalid ? 'end' : 'start'">
+                    
+                    <input type="text" formControlName="phone">
+                    <span class="material-symbols-outlined">
+                        help
+                    </span>
 
-            <div class="form-content">
-                <label for="username">Usuario</label>
-                <input type="text" formControlName="username">
+                </div>
             </div>
 
             <div class="form-content">
                 <label for="password">Contraseña</label>
-                <input type="password" formControlName="password">
+                <div class="cont-input-span"
+                    [@inputError]="registerForm.get('password')?.touched && registerForm.get('password')?.invalid ? 'end' : 'start'">
+
+                    <input type="password" formControlName="password">
+                    <span class="material-symbols-outlined">
+                        help
+                    </span>
+
+                </div>
             </div>
 
             <div class="form-content">
-                <label for="confirmPassword">Contraseña</label>
-                <input type="password" formControlName="confirmPassword">
+                <label for="confirmPassword">Confirmar contraseña</label>
+                <div class="cont-input-span"
+                        [@inputError]="registerForm.get('confirmPassword')?.touched && (registerForm.get('confirmPassword')?.invalid || registerForm.getError('PasswordNoMatch')) ? 'end' : 'start'">
+                
+                    <input type="password" formControlName="confirmPassword">
+                    <span class="material-symbols-outlined">
+                        help
+                    </span>
+                
+                </div>
             </div>
         </div>
 
-        <input class="btn-form" type="submit" value="Registrarme ahora">
+        <button class="btn-form" type="submit">Registrarme ahora</button>
     </form>
     
 </section>

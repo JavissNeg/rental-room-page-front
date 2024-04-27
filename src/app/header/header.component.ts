@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HeaderService } from './services/header.service';
-import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { LoginService } from '../services/login.service';
+import { Subscription, map } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -9,23 +10,38 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent {
 
-	bgVisible: boolean = false;
-	private suscriptionHeader!: Subscription;
+	private loginSubsciption!: Subscription;
+	sesion!: boolean;
+	menu: boolean = false;
 
 	constructor(
-		private headerService: HeaderService
-	) {
-		
-  	}
+		private loginService: LoginService,
+		private router: Router,
+	) { }
 	
 	ngOnInit() {
-		this.suscriptionHeader = this.headerService.bgHeadervisible.subscribe((bgVisible: boolean) => {
-			this.bgVisible = bgVisible;
+		this.loginSubsciption = this.loginService.loginSubject.subscribe( (sesion: boolean) => {
+			this.sesion = sesion;
+			console.log(this.sesion);
 		});
+
+		this.sesion = this.loginService.isLoggedIn();
 	}
 
 	ngOnDestroy() {
-		this.suscriptionHeader.unsubscribe();
+		if (this.loginSubsciption) {
+			this.loginSubsciption.unsubscribe();
+		}
+	}
+
+	toggleMenu() {
+		this.menu = !this.menu;
+	}
+
+	logout() {
+		this.loginService.logout();
+		this.sesion = false;
+		this.router.navigate(['/home']);
 	}
 
 }

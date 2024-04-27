@@ -3,6 +3,7 @@
 
 * {
     margin: 0;
+    padding: 0;
     font-family: "Mochiy Pop One", sans-serif;
     text-decoration: none;
     list-style-type: none;
@@ -13,10 +14,12 @@
 
     --form-bg-light: #ECD7A2;
     
+    --input-bg-light: #F5FCFF;
+    --input-color-light: #534F4F;
+
     --button-bg-light: #c99719d3;
     --button-bg-light-hover: #d49d12;
     --button-color-light: #F5F5F5;
-    --button-color-light-hover: #c99719d3;
 
     --p-color-light: #545454;
     --label-color-light: #534F4F;
@@ -34,6 +37,9 @@ body.light-mode {
     --bg-primary: var(--bg-primary-light);
     --form-bg: var(--form-bg-light);
     
+    --input-bg: var(--input-bg-light);
+    --input-color: var(--input-color-light);
+
     --button-bg: var(--button-bg-light);
     --button-bg-hover: var(--button-bg-light-hover);
     --button-color: var(--button-color-light);

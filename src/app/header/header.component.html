@@ -1,19 +1,37 @@
-<header class="menu" [ngClass]="{
-    'bgVisible': bgVisible,
-    'bgInvisible': !bgVisible,
-}">
-    <a href="#" class="logo">RentalSpace</a>
-
+<header>
     <nav class="nav">
+        
+        <a class="logo" routerLink="/">RentalSpace</a>
+        
         <ul>
+            
             <li>
-                <a href="#">OPCIÓN 1</a>
+                <input type="search" autocorrect="on" placeholder="BUSCAR">
+                <span class="material-symbols-outlined">
+                    search
+                </span>
             </li>
-            <li>
-                <a routerLink="/user/register" >REGÍSTRATE</a></li>
-            <li>
-                <a routerLink="/user/login" >INICIAR SESIÓN</a>
+            <li routerLink="/about">
+                SOBRE NOSOTROS
             </li>
+            <li *ngIf="!sesion" routerLink="/user/register">
+                REGÍSTRATE
+            </li>
+            <li *ngIf="!sesion" routerLink="/user/login">
+                INICIAR SESIÓN
+            </li>
+            <li *ngIf="sesion" (mouseenter)="toggleMenu()" (mouseleave)="toggleMenu()">
+                MI CUENTA
+                <ul class="togglemenu" *ngIf="menu">
+                    <li routerLink="/user/profile">
+                        Mi Perfil
+                    </li>
+                    <li (click)="logout()">
+                        Cerrar sesión
+                    </li>
+                </ul>
+            </li>
+
         </ul>
     </nav>
 </header>

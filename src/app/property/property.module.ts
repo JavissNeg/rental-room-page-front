@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { RoomRoutingModule } from './room-routing.module';
+import { PropertyRoutingModule } from './property-routing.module';
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    RoomRoutingModule
+    PropertyRoutingModule
   ]
 })
-export class RoomModule { }
+export class PropertyModule { }

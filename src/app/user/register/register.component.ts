@@ -2,8 +2,8 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
 import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { LoginService } from 'src/app/services/login.service';
-import { LoginPostRequestBody } from 'src/app/interfaces/login';
+import { LoginService } from 'src/app/shared/services/login.service';
+import { LoginPostRequestBody } from 'src/app/shared/interfaces/login';
 import { Router } from '@angular/router';
 
 export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {

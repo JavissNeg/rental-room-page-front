@@ -11,7 +11,7 @@
                     
                     <input type="text" formControlName="mail">
                     <span class="material-symbols-outlined"
-                        title="">help</span>
+                        [title]="getMessagesErrors('mail')">help</span>
                 
                 </div>  
             </div> 
@@ -22,9 +22,9 @@
                     [@inputError]="loginForm.get('password')?.touched && (loginForm.get('password')?.invalid || loginForm.getError('nonExistent'))  ? 'end' : 'start'">
                     
                     <input type="text" formControlName="password">
-                    <span class="material-symbols-outlined">
-                        help
-                    </span>
+                    <span class="material-symbols-outlined"
+                        [title]="getMessagesErrors('mail')">help</span>
+            
 
                 </div>
             </div>

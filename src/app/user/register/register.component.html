@@ -10,12 +10,12 @@
             
             <div class="form-content">
                 <label for="firstName">Nombre(s)</label>
-                <div class="cont-input-span"
+                <div class="cont-input-span" 
                     [@inputError]="registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid ? 'end' : 'start'">
                     
-                    <input type="text" formControlName="firstName">
+                    <input type="text" formControlName="firstName" maxlength="20">
                     <span class="material-symbols-outlined"
-                        title="">help</span>
+                        [title]="getMessagesErrors('firstName')">help</span>
                 
                 </div>
             </div> 
@@ -25,10 +25,9 @@
                 <div class="cont-input-span"
                     [@inputError]="registerForm.get('paternalSurname')?.touched && registerForm.get('paternalSurname')?.invalid  ? 'end' : 'start'">
                     
-                    <input type="text" formControlName="paternalSurname">
-                    <span class="material-symbols-outlined">
-                        help
-                    </span>
+                    <input type="text" formControlName="paternalSurname" maxlength="15">
+                    <span class="material-symbols-outlined"
+                        [title]="getMessagesErrors('paternalSurname')">help</span>
 
                 </div>
             </div>
@@ -38,10 +37,9 @@
                 <div class="cont-input-span"
                     [@inputError]="registerForm.get('maternalSurname')?.touched && registerForm.get('maternalSurname')?.invalid ? 'end' : 'start'">
                     
-                    <input type="text" formControlName="maternalSurname">
-                    <span class="material-symbols-outlined">
-                        help
-                    </span>
+                    <input type="text" formControlName="maternalSurname" maxlength="15">
+                    <span class="material-symbols-outlined"
+                        [title]="getMessagesErrors('maternalSurname')">help</span>
 
                 </div>
             </div>
@@ -51,10 +49,9 @@
                 <div class="cont-input-span"
                     [@inputError]="registerForm.get('mail')?.touched && registerForm.get('mail')?.invalid ? 'end' : 'start'">
                     
-                    <input type="text" formControlName="mail">
-                    <span class="material-symbols-outlined">
-                        help
-                    </span>
+                    <input type="text" formControlName="mail" maxlength="50">
+                    <span class="material-symbols-outlined"
+                        [title]="getMessagesErrors('mail')">help</span>
 
                 </div>
             </div>
@@ -64,10 +61,9 @@
                 <div class="cont-input-span"
                     [@inputError]="registerForm.get('phone')?.touched && registerForm.get('phone')?.invalid ? 'end' : 'start'">
                     
-                    <input type="text" formControlName="phone">
-                    <span class="material-symbols-outlined">
-                        help
-                    </span>
+                    <input type="text" formControlName="phone" maxlength="10">
+                    <span class="material-symbols-outlined"
+                        [title]="getMessagesErrors('phone')">help</span>
 
                 </div>
             </div>
@@ -77,10 +73,9 @@
                 <div class="cont-input-span"
                     [@inputError]="registerForm.get('password')?.touched && registerForm.get('password')?.invalid ? 'end' : 'start'">
 
-                    <input type="password" formControlName="password">
-                    <span class="material-symbols-outlined">
-                        help
-                    </span>
+                    <input type="password" formControlName="password" maxlength="20">
+                    <span class="material-symbols-outlined"
+                        [title]="getMessagesErrors('password')">help</span>
 
                 </div>
             </div>
@@ -88,12 +83,11 @@
             <div class="form-content">
                 <label for="confirmPassword">Confirmar contraseña</label>
                 <div class="cont-input-span"
-                        [@inputError]="registerForm.get('confirmPassword')?.touched && (registerForm.get('confirmPassword')?.invalid || registerForm.getError('PasswordNoMatch')) ? 'end' : 'start'">
+                        [@inputError]="registerForm.get('confirmPassword')?.touched && (registerForm.get('confirmPassword')?.invalid || registerForm.get('confirmPassword')?.getError('PasswordNoMatch')) ? 'end' : 'start'">
                 
                     <input type="password" formControlName="confirmPassword">
-                    <span class="material-symbols-outlined">
-                        help
-                    </span>
+                    <span class="material-symbols-outlined"
+                        [title]="getMessagesErrors('confirmPassword')">help</span>
                 
                 </div>
             </div>

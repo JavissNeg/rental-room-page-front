@@ -93,6 +93,24 @@ export class LoginComponent {
         );
     }
 
+    getMessagesErrors(controlName: string): string {
+            
+        if (this.loginForm.get(controlName)?.hasError('required')) {
+            return 'Este campo es obligatorio';
+            
+        } else if (this.loginForm.get(controlName)?.hasError('email')) {
+            return 'Correo electrónico inválido';
+
+        } else if (this.loginForm.get(controlName)?.hasError('minlength')) {
+            return 'La contraseña debe tener al menos ' + this.loginForm.get(controlName)?.errors?.['minlength'].requiredLength + ' caracteres';
+       
+        } else if (this.loginForm.get(controlName)?.hasError('maxlength')) {
+            return 'La contraseña debe tener un máximo de ' + this.loginForm.get(controlName)?.errors?.['maxlength'].requiredLength + ' caracteres';
+        }
+        
+        return '';
+    }
+
     onSubmit(): void {
         
         if (this.loginForm.valid) {

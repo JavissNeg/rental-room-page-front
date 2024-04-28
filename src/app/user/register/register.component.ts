@@ -7,7 +7,14 @@ import { LoginPostRequestBody } from 'src/app/interfaces/login';
 import { Router } from '@angular/router';
 
 export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-    return control.value.password === control.value.confirmPassword ? null : { PasswordNoMatch: true };
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
+
+    if (password && confirmPassword && password.value !== confirmPassword.value) {
+        confirmPassword.setErrors({ PasswordNoMatch: true });
+    }
+    
+    return null;
 };
 
 @Component({
@@ -86,7 +93,7 @@ export class RegisterComponent {
                         Validators.required,
                         Validators.minLength(4),
                         Validators.maxLength(20),
-                        Validators.pattern(/^[a-zA-Z]+$/)
+                        Validators.pattern(/^[a-zA-Záéíóú\s]+$/),
                     ]
                 ),
                 'paternalSurname': new FormControl(
@@ -95,7 +102,7 @@ export class RegisterComponent {
                         Validators.required,
                         Validators.minLength(5),
                         Validators.maxLength(15),
-                        Validators.pattern(/^[a-zA-Z]+$/)
+                        Validators.pattern(/^[a-zA-Záéíóú\s]+$/),
                     ]
                 ),
                 'maternalSurname': new FormControl( 
@@ -104,14 +111,15 @@ export class RegisterComponent {
                         Validators.required,
                         Validators.minLength(5),
                         Validators.maxLength(15),
-                        Validators.pattern(/^[a-zA-Z]+$/)
+                        Validators.pattern(/^[a-zA-Záéíóú\s]+$/),
                     ]
                 ),
                 'mail': new FormControl(
                     null, 
                     [
                         Validators.required,
-                        Validators.email
+                        Validators.email,
+                        Validators.maxLength(50),
                     ]
                 ),
                 'phone': new FormControl(
@@ -120,7 +128,7 @@ export class RegisterComponent {
                         Validators.required,
                         Validators.minLength(10),
                         Validators.maxLength(10),
-                        Validators.pattern(/^[0-9]+$/)
+                        Validators.pattern(/^[0-9]+$/),
                     ]
                 ),
                 'password': new FormControl(
@@ -129,7 +137,6 @@ export class RegisterComponent {
                         Validators.required,
                         Validators.minLength(8),
                         Validators.maxLength(20),
-                        Validators.pattern(/^[a-zA-Z0-9]+$/)
                     ]
                 ),
                 'confirmPassword': new FormControl(
@@ -138,7 +145,6 @@ export class RegisterComponent {
                         Validators.required,
                         Validators.minLength(8),
                         Validators.maxLength(20),
-                        Validators.pattern(/^[a-zA-Z0-9]+$/)
                     ]
                 )
             },
@@ -147,6 +153,30 @@ export class RegisterComponent {
             }
         );
 
+    }
+
+    getMessagesErrors(control: string): string {
+        if (this.registerForm.get(control)?.hasError('required')) {
+            return 'Este campo es obligatorio';
+        
+        } else if (this.registerForm.get(control)?.hasError('minlength')) {
+            return 'Este campo debe tener al menos ' + this.registerForm.get(control)?.errors?.["minlength"].requiredLength + ' caracteres';
+        
+        } else if (this.registerForm.get(control)?.hasError('maxlength')) {
+            return 'Este campo debe tener como máximo ' + this.registerForm.get(control)?.errors?.["maxlength"].requiredLength + ' caracteres';
+            
+        } else if (this.registerForm.get(control)?.hasError('pattern')) {
+            return 'Este campo debe contener solo letras';
+        
+        } else if (this.registerForm.get(control)?.hasError('email')) {
+            return 'Este campo debe contener un correo electrónico válido';
+        
+        } else if (this.registerForm.get(control)?.hasError('PasswordNoMatch')) {
+            return 'Las contraseñas no coinciden';
+        
+        } else {
+            return '';
+        }
     }
 
 

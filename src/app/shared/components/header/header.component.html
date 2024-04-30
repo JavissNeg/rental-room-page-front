@@ -21,13 +21,16 @@
                 INICIAR SESIÓN
             </li>
             <li *ngIf="sesion" (mouseenter)="toggleMenu()" (mouseleave)="toggleMenu()">
-                MI CUENTA
+                CUENTA
                 <ul class="togglemenu" *ngIf="menu">
                     <li routerLink="/user/profile">
                         Mi Perfil
                     </li>
+                    <li routerLink="/user/profile">
+                        MIS RENTAS
+                    </li>
                     <li (click)="logout()">
-                        Cerrar sesión
+                        CERRAR SESIÓN
                     </li>
                 </ul>
             </li>

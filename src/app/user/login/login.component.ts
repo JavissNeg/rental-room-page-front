@@ -22,7 +22,7 @@ import { LoginService } from 'src/app/shared/services/login.service';
                     'start', 
                     style(
                         {
-                            backgroundColor: 'var(--input-bg)',
+                            
                         }
                     )
                 ),
@@ -30,7 +30,8 @@ import { LoginService } from 'src/app/shared/services/login.service';
                     'end', 
                     style(
                         {
-                            border: '2px red solid',
+                            border: '2px #C04000 solid',
+                            color: '#C04000',
                             backgroundColor: 'var(--input-bg)',
                         }
                     )
@@ -42,7 +43,7 @@ import { LoginService } from 'src/app/shared/services/login.service';
                             '1s ease-in-out', 
                             keyframes(
                                 [
-                                    style({ transform: 'translateX(0)', offset: 0, backgroundColor: 'red' }),
+                                    style({ transform: 'translateX(0)', offset: 0, backgroundColor: '#C04000', color: '#ffffff'}),
                                     style({ transform: 'translateX(4px)', offset: 0.1 }),
                                     style({ transform: 'translateX(-4px)', offset: 0.2 }),
                                     style({ transform: 'translateX(0)', offset: 0.3 }),
@@ -139,7 +140,13 @@ export class LoginComponent {
 
                     }
 
-                } 
+                } else {
+
+                    this.loginForm.setErrors(
+                        { 'nonExistent': true }
+                    );
+                    
+                }
 
             });
 

@@ -11,7 +11,9 @@
                     
                     <input type="text" formControlName="mail">
                     <span class="material-symbols-outlined"
-                        [title]="getMessagesErrors('mail')">help</span>
+                        [title]="getMessagesErrors('mail')">
+                            help
+                        </span>
                 
                 </div>  
             </div> 
@@ -20,10 +22,9 @@
                 <label for="password">Contraseña</label>
                 <div class="cont-input-span"
                     [@inputError]="loginForm.get('password')?.touched && (loginForm.get('password')?.invalid || loginForm.getError('nonExistent'))  ? 'end' : 'start'">
-                    
-                    <input type="text" formControlName="password">
+                    <input type="password" formControlName="password">
                     <span class="material-symbols-outlined"
-                        [title]="getMessagesErrors('mail')">help</span>
+                        [title]="getMessagesErrors('password')">help</span>
             
 
                 </div>

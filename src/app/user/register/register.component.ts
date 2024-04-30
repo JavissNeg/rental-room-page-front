@@ -1,5 +1,5 @@
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
-import { NgIf } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/shared/services/login.service';
@@ -22,6 +22,7 @@ export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl):
     standalone: true,
     imports: [
         NgIf,
+        NgClass,
         ReactiveFormsModule,
     ],
     templateUrl: './register.component.html',
@@ -34,7 +35,6 @@ export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl):
                     'start', 
                     style(
                         {
-                            backgroundColor: 'var(--input-bg)',
                         }
                     )
                 ),
@@ -42,7 +42,8 @@ export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl):
                     'end', 
                     style(
                         {
-                            border: '2px red solid',
+                            border: '2px #C04000 solid',
+                            color: '#C04000',
                             backgroundColor: 'var(--input-bg)',
                         }
                     )
@@ -54,7 +55,7 @@ export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl):
                             '1s ease-in-out', 
                             keyframes(
                                 [
-                                    style({ transform: 'translateX(0)', offset: 0, backgroundColor: 'red' }),
+                                    style({ transform: 'translateX(0)', offset: 0, backgroundColor: '#C04000', color: '#ffffff' }),
                                     style({ transform: 'translateX(4px)', offset: 0.1 }),
                                     style({ transform: 'translateX(-4px)', offset: 0.2 }),
                                     style({ transform: 'translateX(0)', offset: 0.3 }),

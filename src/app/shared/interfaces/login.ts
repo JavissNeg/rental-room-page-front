@@ -9,12 +9,12 @@ export interface LoginPostRequestBody {
     isVerified: boolean;
     isCertified: boolean;
     address_id?: number;
-    createdAt?: Date; 
-    updatedAt?: Date; 
+    createdAt?: string; 
+    updatedAt?: string; 
 }
 
 
-export interface LoginResponse {
+export interface Login {
     login_Id: number;
     national_id_image: string|null;
     first_name: string;
@@ -26,18 +26,18 @@ export interface LoginResponse {
     isVerified: boolean;
     isCertified: boolean;
     address_id: number;
-    createdAt: Date; 
-    updatedAt?: Date; 
+    createdAt: string; 
+    updatedAt?: string; 
 }
 
 export interface LoginGetResponse {
     status: number;
-    data: LoginResponse[];
+    data: Login[];
     message: string;
 }
 
 export interface LoginPostResponse {
     status: number;
-    data: LoginResponse;
+    data: Login;
     message: string;
 }

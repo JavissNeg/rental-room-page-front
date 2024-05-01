@@ -1,5 +1,6 @@
 * {
     color: var(--h1-color); 
+    font-family: "Mochiy Pop One", sans-serif;
 }
 
 header{
@@ -9,7 +10,8 @@ header{
     align-items: center;
     justify-content: center;
     height: 4rem;
-    padding: 10px 1%;
+    padding: 3% 1%;
+    box-sizing: border-box;
 
     nav {
         width: 100%;
@@ -53,6 +55,7 @@ header{
                 }
 
                 span {
+                    font-family: "Material Symbols Outlined";
                     position: relative;
                     right: 7.3%;
                     color: black;

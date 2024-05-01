@@ -1,30 +1,34 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Property } from '../../interfaces/property';
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor, NgIf, ViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
 
 
 @Component({
-    selector: 'app-card-property',
+    selector: 'app-cont-card-property',
     standalone: true,
     imports: [
-        NgFor
+        NgClass,
+        NgFor,
+        NgIf,
     ],
-    templateUrl: './card-property.component.html',
-    styleUrl: './card-property.component.scss'
+    templateUrl: './cont-card-property.component.html',
+    styleUrl: './cont-card-property.component.scss'
 })
 
-export class CardPropertyComponent {
+export class ContCardsPropertyComponent {
 
     @Input() properties!: Property[];
 
     constructor(
         private router:Router,
+        private viewPortScroller: ViewportScroller
     ) { }
 
     ngOnInit(): void {
     }
 
+    
     gonnaToPropertyDetail(index: number) {
         this.router.navigate(
             [
@@ -35,7 +39,9 @@ export class CardPropertyComponent {
                     property_id: this.properties[index].property_id
                 }
             }
-        );
+        ).then( () => {
+            this.viewPortScroller.scrollToPosition([0, 0]);
+        });
     }
 
 }

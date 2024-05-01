@@ -127,7 +127,8 @@ export class LoginComponent {
                         );
 
                         this.loginService.login(
-                            res.data[0].login_Id?.toString()
+                            res.data[0].login_Id?.toString(),
+                            res.data[0].first_name
                         );
                         
                         this.router.navigate(['/home']);

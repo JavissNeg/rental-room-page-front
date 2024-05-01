@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardPropertyComponent } from './card-property.component';
+import { ContCardsPropertyComponent } from './cont-card-property.component';
 
 describe('CardPropertyComponent', () => {
-  let component: CardPropertyComponent;
-  let fixture: ComponentFixture<CardPropertyComponent>;
+  let component: ContCardsPropertyComponent;
+  let fixture: ComponentFixture<ContCardsPropertyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CardPropertyComponent]
+      imports: [ContCardsPropertyComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CardPropertyComponent);
+    fixture = TestBed.createComponent(ContCardsPropertyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

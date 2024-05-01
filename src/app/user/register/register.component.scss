@@ -1,3 +1,6 @@
+* {   
+    font-family: "Mochiy Pop One", sans-serif;
+}
 
 .section-content {
     background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.1)), url(/assets/bg.jpg);
@@ -73,6 +76,7 @@ form{
                 }
                 
                 span {
+                    font-family: "Material Symbols Outlined";
                     margin-left: 1%;
                     cursor: pointer;
                 }

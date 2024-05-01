@@ -1,4 +1,4 @@
-<div class="header-content container">
+<div class="header-content">
     <div class="header-text">
         <h1>¡Descubre la comodidad en cada apartamento que ofrecemos!</h1>
         <a href="#scroll1" class="btn-1">Iniciar</a>
@@ -7,8 +7,8 @@
 
 
 <div class="rooms">
-    <app-card-property 
-        [properties]="properties"></app-card-property>
+    <app-cont-card-property 
+        [properties]="properties"></app-cont-card-property>
 </div>
 
-<app-register></app-register>
+<app-register *ngIf="sesion"></app-register>

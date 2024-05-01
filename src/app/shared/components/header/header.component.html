@@ -21,10 +21,10 @@
                 INICIAR SESIÓN
             </li>
             <li *ngIf="sesion" (mouseenter)="toggleMenu()" (mouseleave)="toggleMenu()">
-                CUENTA
+                HOLA {{name}}!
                 <ul class="togglemenu" *ngIf="menu">
                     <li routerLink="/user/profile">
-                        Mi Perfil
+                        MI CUENTA
                     </li>
                     <li routerLink="/user/profile">
                         MIS RENTAS

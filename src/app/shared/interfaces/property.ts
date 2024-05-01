@@ -1,25 +1,37 @@
+import { Address } from "src/app/shared/interfaces/address"
+import { Login } from "./login"
+import { PropertyType } from "src/app/shared/interfaces/property-type"
+import { Currency } from "src/app/shared/interfaces/currency"
+import { Period } from "src/app/shared/interfaces/period"
+
 export interface Property {
-    property_id?: number;
-    name: string;
-    description: string;
-    bedrooms_number: string;
-    bathrooms_number: string;
-    image_url: string;
-    price: number;
-    isVerified?: boolean;
-    isAvaible?: boolean;
-    rating: number | null;
-    lessor_id: number;
-    address_id?: number;
-    property_type_id: number;
-    currency_id: number;
-    period_id: number;
-    created_at?: string | null;
-    updated_at: string | null;
+    property_id: number
+    name: string
+    description: string
+    bedrooms_number: string
+    bathrooms_number: string
+    image_url: string[]
+    price: string
+    isVerified: string
+    isAvaible: string
+    rating: number;
+    lessor_id: string
+    address_id: string
+    property_type_id: string
+    currency_id: string
+    period_id: string
+    created_at: any
+    updated_at: any
+    login: Login
+    address: Address
+    property_type: PropertyType
+    currency: Currency
+    period: Period
 }
 
-export interface GetPropertyResponse {
-    status: number;
-    data: Property[] | Property;
-    message?: string;
+
+export interface PropertyGetResponse {
+    status: number
+    data?: Property[]
+    message: string
 }

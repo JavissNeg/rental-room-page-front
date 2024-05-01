@@ -197,7 +197,10 @@ export class RegisterComponent {
 
             this.loginService.newLogin(login).subscribe( (response) => {
                 if (response.status === 201) {
-                    this.loginService.login(response.data.login_Id?.toString());
+                    this.loginService.login(
+                        response.data.login_Id?.toString(),
+                        response.data.first_name
+                    );
                     this.router.navigate(['/home']);
                 } else {
                     console.log('User not created');

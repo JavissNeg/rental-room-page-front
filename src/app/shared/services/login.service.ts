@@ -87,13 +87,19 @@ export class LoginService {
 		return localStorage.getItem(this.LOGIN_ID);
 	}
 
-	login(loginId: string): void {
+	getName(): string | null {
+		return localStorage.getItem('name');
+	}
+
+	login(loginId: string, name: string): void {
 		localStorage.setItem(this.LOGIN_ID, loginId);
+		localStorage.setItem('name', name);
 		this.loginSubject.next(true);
 	}
 
 	logout(): void {
 		localStorage.removeItem(this.LOGIN_ID);
+		localStorage.removeItem('name');
 		this.loginSubject.next(false);
 	}
 

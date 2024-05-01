@@ -13,6 +13,7 @@ export class HeaderComponent {
 	private loginSubsciption!: Subscription;
 	sesion!: boolean;
 	menu: boolean = false;
+	name!: string;
 
 	constructor(
 		private loginService: LoginService,
@@ -22,10 +23,15 @@ export class HeaderComponent {
 	ngOnInit() {
 		this.loginSubsciption = this.loginService.loginSubject.subscribe( (sesion: boolean) => {
 			this.sesion = sesion;
-			console.log(this.sesion);
+			if (sesion) {
+				this.name = this.loginService.getName()?.toUpperCase() || '';
+			}
 		});
-
+		
 		this.sesion = this.loginService.isLoggedIn();
+		if (this.sesion) {
+			this.name = this.loginService.getName()?.toUpperCase() || '';
+		}
 	}
 
 	ngOnDestroy() {

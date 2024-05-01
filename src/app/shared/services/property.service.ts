@@ -26,4 +26,14 @@ export class PropertyService {
 			);
 	}	
 
+
+	getPropertyById(id: string): Observable<PropertyGetResponse> {
+		return this.httpClien.get<PropertyGetResponse>(`${this.apiUrl}/property/${id}`)
+			.pipe(
+				catchError( (error: any) => {
+					return throwError(() => error);
+				})
+			);
+	}
+
 }

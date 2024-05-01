@@ -1,68 +1,65 @@
-<div id="container-principal">
+<div id="cont-principal">
 
-    <div id="container-carousel">
-        <div class="carousel">
-            <div class="carruseles" id="slider">
-                <section class="slider-section">
-                    <img src="assets/ImgPrueba1.jpg" alt="">
-                </section>
-                <section class="slider-section">
-                    <img src="assets/ImgPrueba2.jpg" alt="">
-                </section>
-                <section class="slider-section">
-                    <img src="assets/ImgPrueba3.jpg" alt="">
-                </section>
+    <div id="cont-top">
+
+        <div class="cont-img">
+            <section class="slider-section">
+                <img [src]="property.image_url[index]" alt="image">
+            </section>
+            <div class="btn-left" (click)="previousImage()">
+                <i class='bx bxs-left-arrow'></i>
             </div>
-            <div class="btn-left"><i class='bx bxs-left-arrow'></i></div>
-            <div class="btn-right"><i class='bx bxs-right-arrow'></i></div>
-        </div>
-
-        <div id="container-precio">
-            <div class="info-precio">
-                <h2>$10,000</h2>
-                <a href="#" class="btn">Reservar</a>
+            <div class="btn-right" (click)="nextImage()">
+                <i class='bx bxs-right-arrow' ></i>
             </div>
         </div>
+
+        <div id="cont-info">
+            <ul class="cont-rate">
+                
+                <li *ngFor="let star of [1, 2, 3, 4, 5]">
+                    <span class="material-symbols-outlined fill" *ngIf="star <= property.rating">
+                        star_rate
+                    </span>
+                    <span class="material-symbols-outlined" *ngIf="star > property.rating && star - 1 < property.rating">
+                        star_rate_half
+                    </span>
+                    <span class="material-symbols-outlined" *ngIf="star > property.rating && star - 1 >= property.rating">
+                        star_rate
+                    </span>
+                </li>
+
+                <li class="rate">
+                    {{property.rating}}
+                </li>
+
+            </ul>
+
+            <h2 class="title">{{property.name}}</h2>
+            
+            <h2 class="price">
+                ${{property.price}}
+                <span>{{property.currency.code}} × {{property.period.period}}</span>
+            </h2>
+        
+                
+            <p>Tipo: <span>{{property.property_type.property_type}}</span></p>
+
+            <p>Pais: <span>{{property.address.city.state.country.country}}</span></p>
+            <p>Estado: <span>{{property.address.city.state.state}}</span></p>
+            <p>No. de habitaciones: {{property.bedrooms_number}}</p>
+            <p>No. de baños: {{property.bathrooms_number}}</p>
+
+            
+            <button class="btn" (click)="purchase()">Reservar ahora</button>
+                
+        </div>
+
+    </div>
+
+    <div class="cont-bottom">
+        <h2>Description</h2>
+        <p>{{property.description}}</p>
     </div>
 </div>
 
-<!--User
-const btnLeft = document.querySelector(".btn-left"),
-      btnRight = document.querySelect(".btn-right"),
-      slider = document.querySelect("#slider"),
-      sliderSection = document.querySelectorAll(".slider-section");
-
-btnLeft.addEventListener("click", e => moveToLeft())
-btnRight.addEventListener("click", e => moveToRight())
-
-let operacion = 0,
-    counter = 0,
-    widthImg = 100 / sliderSection.length;
-funcion moveToRight(){
-    if(counter >= sliderSection.length-1){
-        counter = 0;
-        operacion = 0;
-        slider.style.transform = 'translate(-${operacion}%)';
-        slider.style.transition = "none"
-    }
-    else{
-        counter++;
-        operacion = operacion + widthImg;
-        slider.style.transform = 'translate(-${operacion}%)';
-        slider.style.transition = "all ease .6s" 
-    }
-}
-
-funcion moveToLeft(){
-    counter--;
-    if(counter < 0){
-        counter = sliderSection.length-1;
-        operacion = widthImg * (sliderSection.length-1)
-        slider.style.transform = 'translate(-${operacion}%)';
-        slider.style.transition = "none"
-    }else{
-        operacion = operacion - widthImg;
-        slider.style.transform = 'translate(-${operacion}%)';
-        slider.style.transition = "all ease .6s" 
-    }
-}-->

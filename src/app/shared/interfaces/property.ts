@@ -1,5 +1,4 @@
 import { Address } from "src/app/shared/interfaces/address"
-import { Login } from "./login"
 import { PropertyType } from "src/app/shared/interfaces/property-type"
 import { Currency } from "src/app/shared/interfaces/currency"
 import { Period } from "src/app/shared/interfaces/period"
@@ -32,6 +31,16 @@ export interface Property {
 
 export interface PropertyGetResponse {
     status: number
-    data?: Property[]
+    data?: Property[] | Property
     message: string
 }
+
+
+interface Login {
+    login_id: number
+    first_name: string
+    paternal_surname: string
+    maternal_surname: string
+    mail: string
+    phone: string
+  }

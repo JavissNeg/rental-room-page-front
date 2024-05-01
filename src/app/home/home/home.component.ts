@@ -43,7 +43,7 @@ export class HomeComponent {
             
             if (res.status == 200) {
                 console.log(res.data);
-                this.properties = res.data || [];
+                this.properties = res.data as Property[] || [] as Property[];
 
             } else {
                 console.log("No properties");

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { LoginGetResponse, LoginPostRequestBody, LoginPostResponse } from '../interfaces/login';
+import { LoginGetResponse, LoginRequestBody, LoginsGetResponse } from '../interfaces/login';
 import { Observable, Subject, catchError, map, throwError } from 'rxjs';
 
 @Injectable({
@@ -18,8 +18,8 @@ export class LoginService {
 		private http: HttpClient
 	) { }
 
-	newLogin(login: LoginPostRequestBody): Observable<LoginPostResponse> {
-		return this.http.post<LoginPostResponse>(
+	newLogin(login: LoginRequestBody): Observable<LoginGetResponse> {
+		return this.http.post<LoginGetResponse>(
 			`${this.apiUrl}/login`, login
 		).pipe(
 			catchError((error: any) => {
@@ -39,7 +39,7 @@ export class LoginService {
 		);
 	}
 
-	updateLoginById(loginId: number, login: LoginPostRequestBody): Observable<LoginGetResponse> {
+	updateLoginById(loginId: number, login: LoginRequestBody): Observable<LoginGetResponse> {
 		return this.http.put<LoginGetResponse>(
 			`${this.apiUrl}/login/${loginId}`, login
 		).pipe(
@@ -59,8 +59,8 @@ export class LoginService {
 		);
 	}
 
-	getAllLogins(): Observable<LoginGetResponse> {
-		return this.http.get<LoginGetResponse>(
+	getAllLogins(): Observable<LoginsGetResponse> {
+		return this.http.get<LoginsGetResponse>(
 			`${this.apiUrl}/login`
 		).pipe(
 			catchError((error: any) => {
@@ -69,8 +69,8 @@ export class LoginService {
 		);
 	}
 
-	getLoginByMail(mail: string): Observable<LoginGetResponse> {
-		return this.http.get<LoginGetResponse>(
+	getLoginByMail(mail: string): Observable<LoginsGetResponse> {
+		return this.http.get<LoginsGetResponse>(
 			`${this.apiUrl}/login/mail/${mail}`
 		).pipe(
 			catchError((error: any) => {
@@ -79,6 +79,7 @@ export class LoginService {
 		);
 	}
 
+	
 	isLoggedIn(): boolean {
 		return !!localStorage.getItem(this.LOGIN_ID);
 	}

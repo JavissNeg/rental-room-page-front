@@ -1,4 +1,4 @@
-export interface LoginPostRequestBody {
+export interface LoginRequestBody {
     national_id_image?: string;
     first_name: string;
     paternal_surname: string;
@@ -15,7 +15,7 @@ export interface LoginPostRequestBody {
 
 
 export interface Login {
-    login_Id: number;
+    login_id: number;
     national_id_image: string|null;
     first_name: string;
     paternal_surname: string;
@@ -30,13 +30,13 @@ export interface Login {
     updatedAt?: string; 
 }
 
-export interface LoginGetResponse {
+export interface LoginsGetResponse {
     status: number;
     data: Login[];
     message: string;
 }
 
-export interface LoginPostResponse {
+export interface LoginGetResponse {
     status: number;
     data: Login;
     message: string;

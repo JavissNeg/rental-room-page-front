@@ -3,7 +3,7 @@ import { NgClass, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/shared/services/login.service';
-import { LoginPostRequestBody } from 'src/app/shared/interfaces/login';
+import { LoginGetResponse, LoginRequestBody } from 'src/app/shared/interfaces/login';
 import { Router } from '@angular/router';
 
 export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
@@ -184,7 +184,7 @@ export class RegisterComponent {
     onSubmit() {
         if (this.registerForm.valid) {
 
-            let login: LoginPostRequestBody = {
+            let login: LoginRequestBody = {
                 first_name: this.registerForm.value.firstName,
                 paternal_surname: this.registerForm.value.paternalSurname,
                 maternal_surname: this.registerForm.value.maternalSurname,
@@ -195,11 +195,11 @@ export class RegisterComponent {
                 isCertified: false
             };
 
-            this.loginService.newLogin(login).subscribe( (response) => {
-                if (response.status === 201) {
+            this.loginService.newLogin(login).subscribe( (res: LoginGetResponse) => {
+                if (res.status === 201) {
                     this.loginService.login(
-                        response.data.login_Id?.toString(),
-                        response.data.first_name
+                        res.data.login_id.toString(),
+                        res.data.first_name
                     );
                     this.router.navigate(['/home']);
                 } else {

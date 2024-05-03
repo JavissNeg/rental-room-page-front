@@ -141,7 +141,9 @@
     }
 
     .btn{
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
         padding: 10px 20px;
         background-color: #c99719d3;
         color: #F5F5F5;
@@ -150,6 +152,12 @@
         align-self: center;
         font-size: 16px;
         font-weight: 500;
+        height: 50px;
+
+        img {
+            width: 35px;
+            height: fit-content;
+        }
         
         &:hover{
             cursor: pointer;
@@ -174,6 +182,37 @@
 }
 .info-room p{
     margin-bottom: 20px;
+}
+
+
+.cont-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 77%;
+    color: black;
+    background-color: #e0e0e0;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.66);
+    box-sizing: border-box;
+    margin: 20px auto;
+
+    .cont-description {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 100%;
+        margin-bottom: 20px;
+
+        p {
+            font-size: 16px;
+        }
+    }
+
+    
 }
 
 

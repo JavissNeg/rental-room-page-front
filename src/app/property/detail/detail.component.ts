@@ -6,6 +6,7 @@ import { Property } from 'src/app/shared/interfaces/property';
 import { NgFor, NgIf } from '@angular/common';
 import { PaymentService } from 'src/app/shared/services/payment.service';
 import { PaymentGetResponse, PaymentRequestPurchase } from 'src/app/shared/interfaces/payment';
+import { LoginService } from 'src/app/shared/services/login.service';
 
 @Component({
     selector: 'app-detail',
@@ -107,6 +108,7 @@ export class DetailComponent{
         private activateRoute: ActivatedRoute,
         private propertyService: PropertyService,
         private paymentService: PaymentService,
+        private loginService: LoginService,
         private router: Router
     ) {
 
@@ -122,6 +124,7 @@ export class DetailComponent{
                     
                 } else {
                     console.log(res.message);
+
                 }
             });
         });
@@ -141,24 +144,40 @@ export class DetailComponent{
         else 
             this.index = this.property.image_url.length - 1;
     }
-
+    
     purchase() {
-        let data: PaymentRequestPurchase = {
-            amount: Number(this.property.price),
-            currencyCode: this.property.currency.code,
-            returnUrl: 'http://localhost:4200/property/detail',
-            cancelUrl: 'http://localhost:4200/property/detail'
-        }
 
-        this.paymentService.purchasePayment(data).subscribe( (res: PaymentGetResponse) => {
+        // quit !
+        if (!this.loginService.isLoggedIn()) {
+
+            let data: PaymentRequestPurchase = {
+                amount: Number(this.property.price),
+                currencyCode: this.property.currency.code,
+                returnUrl: '',
+                cancelUrl: '',
+                payment_type: 'Paypal',
+                property_id: this.property.property_id,
+                lessee_id: Number(this.loginService.getLoginId())
+            };
             
-            console.log(res);
-            if(res.status == 200) {
-                window.location.href = res.data.redirect_url;
+            this.paymentService.purchasePayment(data).subscribe( (res: PaymentGetResponse) => {
+                
+                if(res.status == 200) {
 
-            } else {
-                console.log(res.message);
-            }
-        });
+                    if(res.data.redirect_url) {
+                        window.location.href = res.data.redirect_url;
+                    }
+    
+                } else {
+                    console.log(res.message);
+
+                }
+
+            });
+            
+        } else {
+            this.router.navigate(['user/login']);
+
+        }
     }
 }

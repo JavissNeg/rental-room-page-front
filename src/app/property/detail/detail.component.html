@@ -51,15 +51,21 @@
             <p>No. de baños: {{property.bathrooms_number}}</p>
 
             
-            <button class="btn" (click)="purchase()">Reservar ahora</button>
+            <button class="btn" (click)="purchase()">
+                <img src="../../../assets/logo_paypal.png" alt="reservar">
+                Reservar ahora
+            </button>
                 
         </div>
 
     </div>
 
     <div class="cont-bottom">
-        <h2>Description</h2>
-        <p>{{property.description}}</p>
+        <div class="cont-description">
+            <h2>Description</h2>
+            <p>{{property.description}}</p>
+        </div>
     </div>
+    
 </div>
 

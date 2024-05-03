@@ -3,6 +3,7 @@ import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginsGetResponse } from 'src/app/shared/interfaces/login';
 import { LoginService } from 'src/app/shared/services/login.service';
 
 @Component({
@@ -116,18 +117,18 @@ export class LoginComponent {
         
         if (this.loginForm.valid) {
             
-            this.loginService.getLoginByMail(this.loginForm.get('mail')?.value).subscribe( res => {
+            this.loginService.getLoginByMail(this.loginForm.get('mail')?.value).subscribe( (res: LoginsGetResponse) => {
                 
                 if (res.status === 200) {
 
                     if (res.data[0].password === this.loginForm.get('password')?.value) {
-                        
+
                         this.loginForm.setErrors(
                             { 'nonExistent': null }
                         );
 
                         this.loginService.login(
-                            res.data[0].login_Id?.toString(),
+                            res.data[0].login_id.toString(),
                             res.data[0].first_name
                         );
                         
@@ -155,6 +156,10 @@ export class LoginComponent {
             this.loginForm.markAllAsTouched();
         }
 
+    }
+
+    goToRouterLink(routerLink: string): void {
+        this.router.navigate([routerLink]);
     }
 
 }

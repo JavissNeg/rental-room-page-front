@@ -5,6 +5,7 @@ import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validatio
 import { LoginService } from 'src/app/shared/services/login.service';
 import { LoginGetResponse, LoginRequestBody } from 'src/app/shared/interfaces/login';
 import { Router } from '@angular/router';
+import { VerificationComponent } from '../verification/verification.component';
 
 export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     const password = control.get('password');
@@ -24,6 +25,7 @@ export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl):
         NgIf,
         NgClass,
         ReactiveFormsModule,
+        VerificationComponent,
     ],
     templateUrl: './register.component.html',
     styleUrl: './register.component.scss',

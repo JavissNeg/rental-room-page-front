@@ -2,18 +2,16 @@
 
     <div id="cont-top">
 
-        <div class="cont-img">
-            <section class="slider-section">
-                <img [src]="property.image_url[index]" alt="image">
-            </section>
-            <div class="btn-left" (click)="previousImage()">
-                <i class='bx bxs-left-arrow'></i>
-            </div>
-            <div class="btn-right" (click)="nextImage()">
-                <i class='bx bxs-right-arrow' ></i>
-            </div>
+        <div class="btn-left" (click)="previousImage()">
+            <i class='bx bxs-left-arrow'></i>
         </div>
-
+        <div class="cont-img">
+            <img [src]="property.image_url[index]" alt="image">
+        </div>
+        <div class="btn-right" (click)="nextImage()">
+            <i class='bx bxs-right-arrow' ></i>
+        </div>
+        
         <div id="cont-info">
             <ul class="cont-rate">
                 
@@ -53,7 +51,7 @@
             
             <button class="btn" (click)="purchase()">
                 <img src="../../../assets/logo_paypal.png" alt="reservar">
-                Reservar ahora
+                Reservar con paypal
             </button>
                 
         </div>
@@ -68,4 +66,7 @@
     </div>
     
 </div>
+
+
+<app-spinner *ngIf="loading"></app-spinner>
 

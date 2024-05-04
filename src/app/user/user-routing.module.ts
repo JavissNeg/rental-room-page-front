@@ -9,6 +9,11 @@ const routes: Routes = [
         canActivate: [authGuard],
     },
     {
+        path: 'verification',
+        loadComponent: () => import('./verification/verification.component').then(m => m.VerificationComponent),
+        canActivate: [authGuard],
+    },
+    {
         path: 'login',
         loadComponent: () => import('./login/login.component').then(m => m.LoginComponent),
         canActivate: [authGuard],

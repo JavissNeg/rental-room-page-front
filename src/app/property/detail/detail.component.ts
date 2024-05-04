@@ -7,13 +7,15 @@ import { NgFor, NgIf } from '@angular/common';
 import { PaymentService } from 'src/app/shared/services/payment.service';
 import { PaymentGetResponse, PaymentRequestPurchase } from 'src/app/shared/interfaces/payment';
 import { LoginService } from 'src/app/shared/services/login.service';
+import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
 
 @Component({
     selector: 'app-detail',
     standalone: true,
     imports: [
         NgFor,
-        NgIf
+        NgIf,
+        SpinnerComponent
     ],
     templateUrl: './detail.component.html',
     styleUrl: './detail.component.scss'
@@ -103,6 +105,7 @@ export class DetailComponent{
     };
 
     index: number = 0;
+    loading: boolean = false;
 
     constructor(
         private activateRoute: ActivatedRoute,
@@ -146,9 +149,9 @@ export class DetailComponent{
     }
     
     purchase() {
+        this.loading = true;
 
-        // quit !
-        if (!this.loginService.isLoggedIn()) {
+        if (this.loginService.isLoggedIn()) {
 
             let data: PaymentRequestPurchase = {
                 amount: Number(this.property.price),
@@ -162,21 +165,28 @@ export class DetailComponent{
             
             this.paymentService.purchasePayment(data).subscribe( (res: PaymentGetResponse) => {
                 
-                if(res.status == 200) {
+                    if(res.status == 200) {
+                        
+                        if(res.data.redirect_url) {
+                            window.location.href = res.data.redirect_url;
+                        }
+                        
+                    } else {
+                        // console.log(res.message);
 
-                    if(res.data.redirect_url) {
-                        window.location.href = res.data.redirect_url;
                     }
-    
-                } else {
-                    console.log(res.message);
 
+                    this.loading = false;
+                },
+                error => {
+                    // console.log(error);
+                    this.loading = false;
                 }
-
-            });
+            );
             
         } else {
             this.router.navigate(['user/login']);
+            this.loading = false;
 
         }
     }

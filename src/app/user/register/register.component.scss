@@ -98,6 +98,8 @@ label{
 
 
 .btn-form{
+    display: flex;
+    justify-content: center;
     color: var(--button-color);
     background-color: var(--button-bg);
     width: 50%;
@@ -111,5 +113,9 @@ label{
 
     &:hover{
         background-color: var(--button-bg-hover);
+    }
+
+    .material-symbols-outlined{
+        margin-left: 7px;
     }
 }

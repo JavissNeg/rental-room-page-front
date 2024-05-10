@@ -51,6 +51,21 @@ body.light-mode {
     --h2-color: var(--h2-color-light);
     --h3-color: var(--h3-color-light);
     --h4-color: var(--h4-color-light);
+
+    .material-symbols-outlined {
+        font-family: 'Material Symbols Outlined';
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+
+        &.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    
+
 }
 
 body.dark-mode {

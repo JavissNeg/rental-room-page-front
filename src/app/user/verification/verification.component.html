@@ -1,9 +1,30 @@
 <section>
-    <div class="cont-verification">
-        <h2>Verificación de cuenta</h2>
-        <p>Se ha enviado un correo electrónico a {{login.mail}}. Por favor, ingrese el código de verificación en el correo electrónico para completar su registro.</p>
+    <form class="cont-verification" [formGroup]="verificationGroup" (ngSubmit)="verification()"> 
         
-        <input type="text" formControlName="verificationCode" maxlength="25" placeholder="Ingrese su codigo aqui">
-        <button type="submit">Verificar codigo</button>
-    </div>
+        <h2>Verificación de cuenta</h2>
+        <p id="info">Se ha enviado un correo electrónico a {{login.mail}}. Por favor, ingrese el código de verificación para completar su registro.</p>
+        
+        <div class="cont-2">
+            <div class="cont-input-span" [@inputError]="verificationGroup.get('code')?.touched && (verificationGroup.get('code')?.invalid || verificationGroup.get('code')?.getError('incorrect')) ? 'end' : 'start'">
+                <input type="text" formControlName="code" maxlength="10" placeholder="Ingrese su codigo aqui">
+                <span class="material-symbols-outlined"
+                    [title]="getMessagesErrors('code')">help</span>
+            </div>
+
+            <button type="button" (click)="resend()" [disabled]="disabledSend">Reenviar
+                <span class="material-symbols-outlined">
+                    mail
+                    </span>
+            </button>
+        </div>
+
+        <p id="msg" *ngIf="verificationGroup.get('code')?.getError('incorrect')">
+            El codigo ingresado es incorrecto. Por favor, verifique el correo electrónico y vuelva a intentarlo.
+        </p>
+
+        <button type="submit" [disabled]="!disabledSend">Confirmar</button>
+
+    </form>
 </section>
+
+<app-spinner *ngIf="loading"></app-spinner>

@@ -6,6 +6,11 @@ import { LoginService } from 'src/app/shared/services/login.service';
 import { LoginGetResponse, LoginRequestBody } from 'src/app/shared/interfaces/login';
 import { Router } from '@angular/router';
 import { VerificationComponent } from '../verification/verification.component';
+import { VerificationCodeService } from 'src/app/shared/services/verificationCode.service';
+import { VerificationCodeRequestBody } from 'src/app/shared/interfaces/VerificationCode';
+import { MailService } from 'src/app/shared/services/mail.service';
+import { MailRequestBody } from 'src/app/shared/interfaces/mail';
+import { SpinnerComponent } from 'src/app/shared/components/spinner/spinner.component';
 
 export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     const password = control.get('password');
@@ -26,6 +31,7 @@ export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl):
         NgClass,
         ReactiveFormsModule,
         VerificationComponent,
+        SpinnerComponent,
     ],
     templateUrl: './register.component.html',
     styleUrl: './register.component.scss',
@@ -78,14 +84,18 @@ export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl):
 })
 
 export class RegisterComponent {
+    
     registerForm!: FormGroup;
+    loading: boolean = false;
 
     constructor(
         private loginService: LoginService,
+        private verificationCodeService: VerificationCodeService,
+        private mailService: MailService,
         private router: Router,
     ) {
     }
-
+    
     ngOnInit(): void {
 
         this.registerForm = new FormGroup(
@@ -196,19 +206,49 @@ export class RegisterComponent {
                 isVerified: true,
                 isCertified: false
             };
+            
+            this.loginService.setData(login);
+            this.router.navigate(['user/verification']);
+            this.loading = true;
 
-            this.loginService.newLogin(login).subscribe( (res: LoginGetResponse) => {
-                if (res.status === 201) {
-                    this.loginService.login(
-                        res.data.login_id.toString(),
-                        res.data.first_name
-                    );
-                    this.router.navigate(['/home']);
-                } else {
-                    console.log('User not created');
-                }
+            this.verificationCodeService.isAvailable(login.mail).subscribe( (res) => {
+				
+				if (res.status === 404) {
+
+					let data: VerificationCodeRequestBody = {
+						mail: login.mail
+					};
+                    
+					this.verificationCodeService.newCode(data).subscribe( (res) => {
+						
+						if (res.status === 201) {
+                            let mailData: MailRequestBody = {
+                                type: '', 
+                                mail: login.mail,
+                                verification_code: res.data.code,
+                                addressee: login.first_name,
+                            };
+
+                            this.mailService.sendMailVerification(mailData).subscribe( (res) => {
+                                if (res.status === 200) {
+                                    this.loading = false;
+                                    this.router.navigate(['user/verification']);
+                                }
+                            });
+
+						}
+					
+					},
+                    (err) => {
+                        this.loading = false;
+                    });
+
+				}
+
+			},
+            (err) => {
+                this.loading = false;
             });
-
 
 
         } else {

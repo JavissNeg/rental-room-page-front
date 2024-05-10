@@ -29,6 +29,23 @@ export class LoginService {
 		
 	}
 
+	setData(data: LoginRequestBody): void {
+		localStorage.setItem('data', JSON.stringify(data));
+	}
+
+	getData(): LoginRequestBody {
+		const data = localStorage.getItem('data');
+		if (data) {
+			return JSON.parse(data);
+		} else {
+			return {} as LoginRequestBody;
+		}
+	}
+
+	deleteData(): void {
+		localStorage.removeItem('data');
+	}
+
 	getLoginById(loginId: number): Observable<LoginGetResponse> {
 		return this.http.get<LoginGetResponse>(
 			`${this.apiUrl}/login/${loginId}`

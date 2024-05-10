@@ -28,7 +28,7 @@
                     <input type="text" formControlName="paternalSurname" maxlength="15">
                     <span class="material-symbols-outlined"
                         [title]="getMessagesErrors('paternalSurname')">help</span>
-
+                    
                 </div>
             </div>
 
@@ -93,7 +93,10 @@
             </div>
         </div>
 
-        <button class="btn-form" type="submit">Registrarme ahora</button>
+        <button class="btn-form" type="submit">Registrarme
+        </button>
     </form>
 
 </section>
+
+<app-spinner *ngIf="loading"></app-spinner>

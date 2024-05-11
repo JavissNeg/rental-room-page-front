@@ -90,10 +90,10 @@ export class VerificationComponent {
 
 		this.router.events
 		.pipe(filter(event => event instanceof NavigationEnd))
-		.subscribe((event: any) => {
+		.subscribe(() => {
 			this.loginService.deleteData();
 		});
-  
+		
 
 		this.verificationGroup = new FormGroup(
 			{
@@ -101,13 +101,14 @@ export class VerificationComponent {
 					'',
 					[
 						Validators.required,
+						Validators.minLength(1),
 					]
 				),
 			}
 		);
 
-		this.login = this.loginService.getData();
 
+		this.login = this.loginService.getData();
 		if (Object.keys(this.login).length === 0) {
 			this.router.navigate(['user/register']);
 			
@@ -118,71 +119,76 @@ export class VerificationComponent {
 
 	verification(): void {
 
-		this.loading = true;
-		this.verificationGroup.get('code')?.setErrors(
-			{
-				'incorrect': null
-			}
-		);
+		if(this.verificationGroup.get('code')?.valid) {
 
-		this.verificationCodeService.isAvailable(this.login.mail).subscribe( (res) => {
+			this.loading = true;
+
+			this.verificationCodeService.isAvailable(this.login.mail).subscribe( (res) => {
+				
+				if (res.status === 200) {
+
+					if(res.data.code === this.verificationGroup.get('code')?.value.toString()) {
 			
-			if (res.status === 200) {
+						this.verificationGroup.setErrors(
+							{
+								'incorrect': null
+							}
+						);
 
-				if(res.data.code === this.verificationGroup.get('code')?.value) {
+						this.loginService.newLogin(this.login).subscribe( (res: LoginGetResponse) => {
+							
+							if (res.status === 201) {
+			
+								this.loginService.login(
+									res.data.login_id.toString(),
+									res.data.first_name
+								);
+
+								let dataMail: MailRequestBody = {
+									type: '',
+									mail: this.login.mail,
+									addressee: this.login.first_name
+								};
+
+								this.mailService.sendCompleteRegistration(dataMail).subscribe( (res) => {
+
+									if (res.status === 200) {
+										this.loading = false;
+										this.loginService.deleteData();
+										this.router.navigate(['/home']);
+									}
+
+								});
 		
-					this.loginService.newLogin(this.login).subscribe( (res: LoginGetResponse) => {
-						
-						if (res.status === 201) {
-		
-							this.loginService.login(
-								res.data.login_id.toString(),
-								res.data.first_name
-							);
-
-							let dataMail: MailRequestBody = {
-								type: '',
-								mail: this.login.mail,
-								addressee: this.login.first_name,
-							};
-
-							this.mailService.sendCompleteRegistration(dataMail).subscribe( (res) => {
-
-								if (res.status === 200) {
-									this.loading = false;
-									this.loginService.deleteData();
-									this.router.navigate(['/home']);
-								}
-
-							});
-	
-		
-						} else {
+			
+							} else {
+								this.loading = false;
+							}
+			
+						},
+						(err) => {
 							this.loading = false;
-						}
-		
-					},
-					(err) => {
+						});
+
+					} else {
+
 						this.loading = false;
-					});
+						this.verificationGroup.setErrors(
+							{ 'incorrect': true }
+						);
+
+					}
 
 				} else {
-
 					this.loading = false;
-					this.verificationGroup.get('code')?.setErrors(
-						{ 'incorrect': true }
-					);
+					this.disabledSend = false; 
 				}
-
-			} else {
+			},
+			(err) => {
 				this.loading = false;
-				this.disabledSend = false; 
-			}
-		},
-		(err) => {
-			this.loading = false;
-		});
+			});
 
+		}
 
 	}
 
@@ -202,6 +208,10 @@ export class VerificationComponent {
 				this.loading = false;
 			}
 
+		},
+		(err) => {
+			this.loading = false;
+		
 		});
 	}
 

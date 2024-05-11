@@ -5,7 +5,7 @@
         <p id="info">Se ha enviado un correo electrónico a {{login.mail}}. Por favor, ingrese el código de verificación para completar su registro.</p>
         
         <div class="cont-2">
-            <div class="cont-input-span" [@inputError]="verificationGroup.get('code')?.touched && (verificationGroup.get('code')?.invalid || verificationGroup.get('code')?.getError('incorrect')) ? 'end' : 'start'">
+            <div class="cont-input-span" [@inputError]="verificationGroup.get('code')?.touched && (verificationGroup.get('code')?.invalid || verificationGroup.getError('incorrect')) ? 'end' : 'start'">
                 <input type="text" formControlName="code" maxlength="10" placeholder="Ingrese su codigo aqui">
                 <span class="material-symbols-outlined"
                     [title]="getMessagesErrors('code')">help</span>
@@ -18,8 +18,8 @@
             </button>
         </div>
 
-        <p id="msg" *ngIf="verificationGroup.get('code')?.getError('incorrect')">
-            El codigo ingresado es incorrecto. Por favor, verifique el correo electrónico y vuelva a intentarlo.
+        <p id="msg" *ngIf="verificationGroup.getError('incorrect')">
+            El codigo ingresado es incorrecto.
         </p>
 
         <button type="submit" [disabled]="!disabledSend">Confirmar</button>

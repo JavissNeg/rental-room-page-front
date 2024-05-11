@@ -208,9 +208,8 @@ export class RegisterComponent {
             };
             
             this.loginService.setData(login);
-            this.router.navigate(['user/verification']);
-            this.loading = true;
 
+            this.loading = true;
             this.verificationCodeService.isAvailable(login.mail).subscribe( (res) => {
 				
 				if (res.status === 404) {

@@ -6,8 +6,8 @@
         <ul>
             
             <li>
-                <input type="search" autocorrect="on" placeholder="BUSCAR">
-                <span class="material-symbols-outlined">
+                <input type="search" autocorrect="on" placeholder="BUSCAR" (keyup)="search($event)" [(ngModel)]="valueSearch">
+                <span class="material-symbols-outlined" (click)="goToSearch()">
                     search
                 </span>
             </li>

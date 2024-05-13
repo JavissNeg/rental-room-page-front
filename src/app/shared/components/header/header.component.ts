@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../..//services/login.service';
 import { Subscription, map } from 'rxjs';
 
@@ -14,10 +14,12 @@ export class HeaderComponent {
 	sesion!: boolean;
 	menu: boolean = false;
 	name!: string;
+	valueSearch: string = '';
 
 	constructor(
 		private loginService: LoginService,
 		private router: Router,
+		private aciveRoute: ActivatedRoute,
 	) { }
 	
 	ngOnInit() {
@@ -32,6 +34,10 @@ export class HeaderComponent {
 		if (this.sesion) {
 			this.name = this.loginService.getName()?.toUpperCase() || '';
 		}
+		
+		this.aciveRoute.queryParams.subscribe( (params: any) => {
+			this.valueSearch = params.search || '';
+		});
 	}
 
 	ngOnDestroy() {
@@ -49,5 +55,25 @@ export class HeaderComponent {
 		this.sesion = false;
 		this.router.navigate(['/home']);
 	}
+
+	search(event: any) {
+		if (event.keyCode === 13) {
+			this.goToSearch();
+		} else {
+			this.valueSearch = event.target.value;
+		}
+	}
+
+	goToSearch() {
+		this.router.navigate(
+			['/property/search'],
+			{
+				queryParams: {
+					search: this.valueSearch
+				}
+			}
+		);
+	}
+	
 
 }

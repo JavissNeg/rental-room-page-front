@@ -46,7 +46,7 @@ export class HomeComponent {
                 this.properties = res.data as Property[] || [] as Property[];
 
             } else {
-                console.log("No properties");
+                //console.log("No properties");
                 
             }
 

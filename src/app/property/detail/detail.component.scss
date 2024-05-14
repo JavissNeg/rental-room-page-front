@@ -119,6 +119,7 @@
     }
     
     p {
+
         color: var(--p-font-color);
         font-weight: 500;
         padding: 0;
@@ -126,6 +127,18 @@
 
         span {
             font-weight: 400;
+        }
+    }
+
+    #avaible {
+        display: flex;
+        align-items: center;
+
+        .material-symbols-outlined.avaible {
+            color: green;
+        }
+        .material-symbols-outlined.no-avaible {
+            color: red;
         }
     }
 

@@ -45,10 +45,18 @@
 
             <p>Pais: <span>{{property.address.city.state.country.country}}</span></p>
             <p>Estado: <span>{{property.address.city.state.state}}</span></p>
-            <p>No. de habitaciones: {{property.bedrooms_number}}</p>
-            <p>No. de baños: {{property.bathrooms_number}}</p>
+            <p>Ciudad: <span>{{property.address.city.city}}</span></p>
+            <p>No. de habitaciones: <span>{{property.bedrooms_number}}</span></p>
+            <p>No. de baños: <span>{{property.bathrooms_number}}</span></p>
+            <p id="avaible">Disponible: 
+                <span *ngIf="property.isAvaible"  class="material-symbols-outlined avaible">
+                    sentiment_satisfied
+                </span>
+                <span *ngIf="!property.isAvaible" class="material-symbols-outlined no-avaible">
+                    sentiment_dissatisfied
+                </span>
+            </p>
 
-            
             <button class="btn" (click)="purchase()">
                 <img src="../../../assets/logo_paypal.png" alt="reservar">
                 Reservar con paypal

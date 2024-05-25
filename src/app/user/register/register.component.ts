@@ -86,6 +86,7 @@ export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl):
 export class RegisterComponent {
     
     registerForm!: FormGroup;
+    registerFirstStep: boolean = false;
     loading: boolean = false;
 
     constructor(
@@ -231,7 +232,7 @@ export class RegisterComponent {
                             this.mailService.sendMailVerification(mailData).subscribe( (res) => {
                                 if (res.status === 200) {
                                     this.loading = false;
-                                    this.router.navigate(['user/verification']);
+                                    this.registerFirstStep = true;
                                 }
                             });
 
@@ -253,6 +254,10 @@ export class RegisterComponent {
         } else {
             this.registerForm.markAllAsTouched();
         }
+    }
+
+    goToRouterLink(routerLink: string): void {
+        this.router.navigate([routerLink]);
     }
 
 }

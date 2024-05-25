@@ -1,6 +1,8 @@
 @import 'material-symbols';
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -8,29 +10,84 @@
     list-style-type: none;
 }
 
+a {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+label {
+    color: var(--label-color);
+}
+
+p {
+    font-family: "Montserrat", sans-serif;
+    color: var(--p-color);
+}
+
+h1 {
+    font-family: "Bebas Neue", sans-serif;
+    color: var(--h1-color);
+}
+
+h2 {
+    font-family: "Montserrat", sans-serif;
+    color: var(--h2-color);
+}
+
+h3 {
+    color: var(--h3-color);
+}
+
+h4 {
+    color: var(--h4-color);
+}
+
+button {
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--button-bg);
+    color: var(--button-color);
+    padding: 8px 20px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    
+    &:hover {
+        cursor: pointer;
+        background-color: var(--button-bg-hover);
+    }
+}
+
+
+
 :root {
     --bg-primary-light: #f9f9f9;
 
     --form-bg-light: #ECD7A2;
     
-    --input-bg-light: #F5FCFF;
-    --input-color-light: #534F4F;
+    --input-bg-light: #F4EFEF;
+    --input-color-light: #C4C4C3;
 
-    --button-bg-light: #c99719d3;
-    --button-bg-light-hover: #d49d12;
+    --button-bg-light: #FFB733;
+    --button-bg-light-hover: #FFC254;
     --button-color-light: #F5F5F5;
 
-    --p-color-light: #545454;
-    --label-color-light: #534F4F;
-    --h1-color-light: #F5F5F5;
-    --h2-color-light: #504f4f;
-    --h3-color-light: #504f4f;
-    --h4-color-light: #534F4F;
-    
+    --p-color-light: #303030;
+    --h1-color-light: #646363;
+    --h2-color-light: #303030;
+    --h3-color-light: #F1F1F1;
+    --h4-color-light: #DEDDDD;
+    --label-color-light: #FFFFFF;
+
+    --font-Bebas: 'Bebas Neue', sans-serif;
+    --font-Montserrat: 'Montserrat', sans-serif;
 
     --bg-primary-dark: #333;
     --bg-button-dark: #333;
     --color-font-dark: #fff;
+
+
 }
 
 body.light-mode {
@@ -51,7 +108,7 @@ body.light-mode {
     --h2-color: var(--h2-color-light);
     --h3-color: var(--h3-color-light);
     --h4-color: var(--h4-color-light);
-
+    
     .material-symbols-outlined {
         font-family: 'Material Symbols Outlined';
         font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
@@ -72,5 +129,17 @@ body.dark-mode {
     --bg-primary: var(--bg-primary-dark);
     --bg-button: var(--bg-button-dark);
     --h1-color: var(--color-font-dark);
+}
+
+.cont-padding {
+    padding: 0 8%;
+}
+
+.familyBebas{
+    font-family: "Bebas Neue", sans-serif;
+}
+
+.familyMontserrat{
+    font-family: "Montserrat", sans-serif;
 }
 

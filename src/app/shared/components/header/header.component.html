@@ -1,40 +1,40 @@
 <header>
-    <nav class="nav">
+    
+    <a class="logo" routerLink="/home">RentalSpace</a>
+    
+    <ul>
         
-        <a class="logo" routerLink="/home">RentalSpace</a>
+        <li>
+            <input type="search" autocorrect="on" placeholder="Buscador" (keyup)="search($event)" [(ngModel)]="valueSearch">
+            <span class="material-symbols-outlined" (click)="goToSearch()">
+                search
+            </span>
+        </li>
         
-        <ul>
-            
-            <li>
-                <input type="search" autocorrect="on" placeholder="BUSCAR" (keyup)="search($event)" [(ngModel)]="valueSearch">
-                <span class="material-symbols-outlined" (click)="goToSearch()">
-                    search
-                </span>
-            </li>
-            <li routerLink="/about">
-                SOBRE NOSOTROS
-            </li>
-            <li *ngIf="!sesion" routerLink="/user/register">
-                REGÍSTRATE
-            </li>
-            <li *ngIf="!sesion" routerLink="/user/login">
-                INICIAR SESIÓN
-            </li>
-            <li *ngIf="sesion" (mouseenter)="toggleMenu()" (mouseleave)="toggleMenu()">
-                HOLA {{name}}!
-                <ul class="togglemenu" *ngIf="menu">
-                    <li routerLink="/user/profile">
-                        MI CUENTA
-                    </li>
-                    <li routerLink="/user/profile">
-                        MIS RENTAS
-                    </li>
-                    <li (click)="logout()">
-                        CERRAR SESIÓN
-                    </li>
-                </ul>
-            </li>
+        <!-- <li routerLink="/about">
+            SOBRE NOSOTROS
+        </li> -->
 
-        </ul>
-    </nav>
+        <li id="register" *ngIf="!sesion" routerLink="/user/register">
+            REGÍSTRATE
+        </li>
+        <li id="login" *ngIf="!sesion" routerLink="/user/login">
+            INICIAR SESIÓN
+        </li>
+        <li *ngIf="sesion" (mouseenter)="toggleMenu()" (mouseleave)="toggleMenu()">
+            HOLA {{name}}!
+            <ul class="togglemenu" *ngIf="menu">
+                <li routerLink="/user/profile">
+                    MI CUENTA
+                </li>
+                <li routerLink="/user/profile">
+                    MIS RENTAS
+                </li>
+                <li (click)="logout()">
+                    CERRAR SESIÓN
+                </li>
+            </ul>
+        </li>
+
+    </ul>
 </header>

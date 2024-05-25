@@ -1,44 +1,48 @@
 <section class="section-content">
-    
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <h4>Inicia sesión</h4>
-        <div class="form-group">
-            
-            <div class="form-content">
-                <label for="mail">Correo electrónico</label>
-                <div class="cont-input-span"
-                    [@inputError]="loginForm.get('mail')?.touched && (loginForm.get('mail')?.invalid || loginForm.getError('nonExistent')) ? 'end' : 'start'">
-                    
-                    <input type="text" formControlName="mail">
-                    <span class="material-symbols-outlined"
-                        [title]="getMessagesErrors('mail')">
-                            help
-                        </span>
+    <div>
+        <div class="left">
+            <h2 class="familyBebas">¡BIENVENIDO DE VUELTA!</h2>
+            <img src="../../../assets/login/left.png" alt="Login">
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <h4 class="familyMontserrat">Inicia Sesión</h4>
+            <div class="form-group">
                 
-                </div>  
-            </div> 
+                <div class="form-content">
+                    <div class="cont-input-span"
+                        [@inputError]="loginForm.get('mail')?.touched && (loginForm.get('mail')?.invalid || loginForm.getError('nonExistent')) ? 'end' : 'start'">
+                        
+                        <input class="familyMontserrat" type="text" formControlName="mail" placeholder="Correo electrónico">
+                        <span class="material-symbols-outlined"
+                            [title]="getMessagesErrors('mail')">
+                                help
+                            </span>
+                    
+                    </div>  
+                </div> 
 
-            <div class="form-content">
-                <label for="password">Contraseña</label>
-                <div class="cont-input-span"
-                    [@inputError]="loginForm.get('password')?.touched && (loginForm.get('password')?.invalid || loginForm.getError('nonExistent'))  ? 'end' : 'start'">
-                    <input type="password" formControlName="password">
-                    <span class="material-symbols-outlined"
-                        [title]="getMessagesErrors('password')">help</span>
-            
+                <div class="form-content">
+                    <div class="cont-input-span"
+                        [@inputError]="loginForm.get('password')?.touched && (loginForm.get('password')?.invalid || loginForm.getError('nonExistent'))  ? 'end' : 'start'">
+                        <input class="familyMontserrat" type="password" formControlName="password" placeholder="Contraseña">
+                        <span class="material-symbols-outlined"
+                            [title]="getMessagesErrors('password')">help</span>
+                
 
+                    </div>
                 </div>
+
             </div>
 
-        </div>
-
-        <button class="btn-form" type="submit">Iniciar sesión</button>
-        
-        
-        <div class="form-footer">
-            <p>¿No tienes cuenta? <a (click)="goToRouterLink('user/register')">Regístrate</a></p>
-        </div>
+            <button class="btn-form" type="submit">ACCEDER</button>
             
-    </form>
+            
+            <div class="form-footer">
+                <p>¿No tienes cuenta? <a (click)="goToRouterLink('user/register')">Regístrate</a></p>
+            </div>
+                
+        </form>
+    </div>
     
 </section>

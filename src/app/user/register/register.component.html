@@ -1,102 +1,106 @@
 <section class="section-content">
     
-    <div class="section-img">
-        <img src="assets/persona3.png" alt="">
-    </div>
+    <div>
+    
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <h4 class="familyMontserrat">Registrate</h4>
+            <div class="form-group">
+                
+                <div class="form-content">
+                    <div class="cont-input-span" 
+                        [@inputError]="registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid ? 'end' : 'start'">
+                        
+                        <input type="text" formControlName="firstName" maxlength="20" placeholder="Nombre(s)">
+                        <span class="material-symbols-outlined"
+                            [title]="getMessagesErrors('firstName')">help</span>
+    
+                    </div>
+                </div> 
+    
+                <div class="form-content">
+                    <div class="cont-input-span"
+                        [@inputError]="registerForm.get('paternalSurname')?.touched && registerForm.get('paternalSurname')?.invalid  ? 'end' : 'start'">
+                        
+                        <input type="text" formControlName="paternalSurname" maxlength="15" placeholder="Apellido paterno">
+                        <span class="material-symbols-outlined"
+                            [title]="getMessagesErrors('paternalSurname')">help</span>
+                        
+                    </div>
+                </div>
+    
+                <div class="form-content">
+                    <div class="cont-input-span"
+                        [@inputError]="registerForm.get('maternalSurname')?.touched && registerForm.get('maternalSurname')?.invalid ? 'end' : 'start'">
+                        
+                        <input type="text" formControlName="maternalSurname" maxlength="15" placeholder="Apellido materno">
+                        <span class="material-symbols-outlined"
+                            [title]="getMessagesErrors('maternalSurname')">help</span>
+    
+                    </div>
+                </div>
+    
+                <div class="form-content">
+                    <div class="cont-input-span"
+                        [@inputError]="registerForm.get('mail')?.touched && registerForm.get('mail')?.invalid ? 'end' : 'start'">
+                        
+                        <input type="text" formControlName="mail" maxlength="50" placeholder="Correo eléctronico">
+                        <span class="material-symbols-outlined"
+                            [title]="getMessagesErrors('mail')">help</span>
+    
+                    </div>
+                </div>
+    
+                <div class="form-content">
+                    <div class="cont-input-span"
+                        [@inputError]="registerForm.get('phone')?.touched && registerForm.get('phone')?.invalid ? 'end' : 'start'">
+                        
+                        <input type="text" formControlName="phone" maxlength="10" placeholder="Teléfono">
+                        <span class="material-symbols-outlined"
+                            [title]="getMessagesErrors('phone')">help</span>
+    
+                    </div>
+                </div>
+    
+                <div class="form-content">
+                    <div class="cont-input-span"
+                        [@inputError]="registerForm.get('password')?.touched && registerForm.get('password')?.invalid ? 'end' : 'start'">
+    
+                        <input type="password" formControlName="password" maxlength="20" placeholder="Contraseña">
+                        <span class="material-symbols-outlined"
+                            [title]="getMessagesErrors('password')">help</span>
+    
+                    </div>
+                </div>
+    
+                <div class="form-content">
+                    <div class="cont-input-span"
+                            [@inputError]="registerForm.get('confirmPassword')?.touched && (registerForm.get('confirmPassword')?.invalid || registerForm.get('confirmPassword')?.getError('PasswordNoMatch')) ? 'end' : 'start'">
+                    
+                        <input type="password" formControlName="confirmPassword" placeholder="Confirmar contraseña">
+                        <span class="material-symbols-outlined"
+                            [title]="getMessagesErrors('confirmPassword')">help</span>
+                    
+                    </div>
+                </div>
+            </div>
+    
+            <button class="btn-form" type="submit">Registrarme
+            </button>
 
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <h4>Registrate</h4>
-        <div class="form-group">
+            <div class="form-footer">
+                <p>¿Ya tienes cuenta? <a (click)="goToRouterLink('user/register')">Iniciar sesión</a></p>
+            </div>
             
-            <div class="form-content">
-                <label for="firstName">Nombre(s)</label>
-                <div class="cont-input-span" 
-                    [@inputError]="registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid ? 'end' : 'start'">
-                    
-                    <input type="text" formControlName="firstName" maxlength="20">
-                    <span class="material-symbols-outlined"
-                        [title]="getMessagesErrors('firstName')">help</span>
-
-                </div>
-            </div> 
-
-            <div class="form-content">
-                <label for="paternalSurname">Apellido Paterno</label>
-                <div class="cont-input-span"
-                    [@inputError]="registerForm.get('paternalSurname')?.touched && registerForm.get('paternalSurname')?.invalid  ? 'end' : 'start'">
-                    
-                    <input type="text" formControlName="paternalSurname" maxlength="15">
-                    <span class="material-symbols-outlined"
-                        [title]="getMessagesErrors('paternalSurname')">help</span>
-                    
-                </div>
-            </div>
-
-            <div class="form-content">
-                <label for="maternalSurname">Apellido Materno</label>
-                <div class="cont-input-span"
-                    [@inputError]="registerForm.get('maternalSurname')?.touched && registerForm.get('maternalSurname')?.invalid ? 'end' : 'start'">
-                    
-                    <input type="text" formControlName="maternalSurname" maxlength="15">
-                    <span class="material-symbols-outlined"
-                        [title]="getMessagesErrors('maternalSurname')">help</span>
-
-                </div>
-            </div>
-
-            <div class="form-content">
-                <label for="mail">Correo electronico</label>
-                <div class="cont-input-span"
-                    [@inputError]="registerForm.get('mail')?.touched && registerForm.get('mail')?.invalid ? 'end' : 'start'">
-                    
-                    <input type="text" formControlName="mail" maxlength="50">
-                    <span class="material-symbols-outlined"
-                        [title]="getMessagesErrors('mail')">help</span>
-
-                </div>
-            </div>
-
-            <div class="form-content">
-                <label for="phone">Teléfono</label>
-                <div class="cont-input-span"
-                    [@inputError]="registerForm.get('phone')?.touched && registerForm.get('phone')?.invalid ? 'end' : 'start'">
-                    
-                    <input type="text" formControlName="phone" maxlength="10">
-                    <span class="material-symbols-outlined"
-                        [title]="getMessagesErrors('phone')">help</span>
-
-                </div>
-            </div>
-
-            <div class="form-content">
-                <label for="password">Contraseña</label>
-                <div class="cont-input-span"
-                    [@inputError]="registerForm.get('password')?.touched && registerForm.get('password')?.invalid ? 'end' : 'start'">
-
-                    <input type="password" formControlName="password" maxlength="20">
-                    <span class="material-symbols-outlined"
-                        [title]="getMessagesErrors('password')">help</span>
-
-                </div>
-            </div>
-
-            <div class="form-content">
-                <label for="confirmPassword">Confirmar contraseña</label>
-                <div class="cont-input-span"
-                        [@inputError]="registerForm.get('confirmPassword')?.touched && (registerForm.get('confirmPassword')?.invalid || registerForm.get('confirmPassword')?.getError('PasswordNoMatch')) ? 'end' : 'start'">
-                
-                    <input type="password" formControlName="confirmPassword">
-                    <span class="material-symbols-outlined"
-                        [title]="getMessagesErrors('confirmPassword')">help</span>
-                
-                </div>
-            </div>
+        </form>
+    
+        <div class="right">
+            <h2 class="familyBebas">¿Quién eres?</h2>
+            <img src="assets/persona3.png" alt="">
         </div>
-
-        <button class="btn-form" type="submit">Registrarme
-        </button>
-    </form>
+    </div>
 
 </section>
 
 <app-spinner *ngIf="loading"></app-spinner>
+
+<app-verification *ngIf="!registerFirstStep"></app-verification>

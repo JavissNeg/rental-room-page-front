@@ -7,7 +7,7 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(10px, 1fr));
     grid-auto-rows: 1fr;
-    gap: 1.12rem;
+    gap: 1.5rem;
     width: 100%;
 
     .room {

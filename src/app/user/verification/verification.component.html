@@ -1,21 +1,15 @@
 <section>
     <form class="cont-verification" [formGroup]="verificationGroup" (ngSubmit)="verification()"> 
         
-        <h2>Verificación de cuenta</h2>
-        <p id="info">Se ha enviado un correo electrónico a {{login.mail}}. Por favor, ingrese el código de verificación para completar su registro.</p>
+        <h2 class="familyMonsterrat">Código de verificación</h2>
+        <p id="info">Hemos enviado un código a tu correo {{login.mail}}. Por favor, ingreselo aqui para completar su registro.</p>
         
         <div class="cont-2">
             <div class="cont-input-span" [@inputError]="verificationGroup.get('code')?.touched && (verificationGroup.get('code')?.invalid || verificationGroup.getError('incorrect')) ? 'end' : 'start'">
-                <input type="text" formControlName="code" maxlength="10" placeholder="Ingrese su codigo aqui">
+                <input type="text" formControlName="code" maxlength="10" placeholder="Ingrese su código">
                 <span class="material-symbols-outlined"
                     [title]="getMessagesErrors('code')">help</span>
             </div>
-
-            <button type="button" (click)="resend()" [disabled]="disabledSend">Reenviar
-                <span class="material-symbols-outlined">
-                    mail
-                    </span>
-            </button>
         </div>
 
         <p id="msg" *ngIf="verificationGroup.getError('incorrect')">
@@ -24,6 +18,10 @@
 
         <button type="submit" [disabled]="!disabledSend">Confirmar</button>
 
+        <div class="down">
+            <h2>¿No recibiste el código?</h2>
+            <a (click)="resend()" class="familyMontserrat">Reenviar código</a>
+        </div>
     </form>
 </section>
 

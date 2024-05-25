@@ -1,14 +1,11 @@
-* {   
-    font-family: "Mochiy Pop One", sans-serif;
-}
 
 section {
-    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.1)), url(/assets/bg.jpg);
-    min-height: 100vh;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: rgba(100, 100, 100, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,7 +13,7 @@ section {
     padding: 2% 0;
 
     .cont-verification {
-        background-color: rgba(255, 255, 255, 0.7);
+        background-color: white;
         padding: 2%;
         border-radius: 20px;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
@@ -27,24 +24,25 @@ section {
         justify-content: center;
         align-items: center;
 
-        h1 {
+        h2 {
             margin-bottom: 2%;
-            color: var(--h1-color);
+            color: #B0B0B0;
         }
 
         p {
             color: var(--p-color);
             text-align: start;
+            font-size: 12px;
         }
 
         #info {
-            padding: 2% 0;
+            margin-bottom: 10px;
+            color: #B0B0B0;
         }
 
         #msg {
-            font-size: 14px;
-            padding: 1% 0;
-            width: 100%;
+            margin-top: 5px;
+            width: 60%;
             color: #C04000;
         }
 
@@ -52,33 +50,30 @@ section {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin: 10px 0;
             
             .cont-input-span {
-                width: 50%;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-around;
                 background-color: var(--input-bg);
+                color: var(--input-color);
                 border-radius: 25px;
                 padding: 5px 10px;
-                color: var(--input-color);
-                margin-right: 10px;
                 
                 input {
                     background-color: transparent;
                     border: 0;
                     outline: none;
-                    padding: 1% 2%;
-                    border-radius: 20px;
-                    font-size: 1rem;
+                    font-size: 12px;
                     width: 90%;
                 }
         
                 span {
+                    font-family: "Material Symbols Outlined";
                     margin-left: 1%;
-                    width: 9%;
+                    cursor: pointer;
                 }
 
             }
@@ -86,52 +81,26 @@ section {
         }
 
         button {
-            display: flex;
-            padding: 10px 20px;
-            border-radius: 20px;
-            width: fit-content;
+            margin-top: 5px;
+            font-size: 14px;
             
-            &:hover {
-                cursor: pointer;
-                border: 1px solid #f1c40f;
-            }
-
-            .material-symbols-outlined {
-                margin-left: 7px;
-            }
         }
 
-        .btn-verification {
-            background-color: #f1c40f;
-            color: #fff;
-            padding: 1% 2%;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: 0.3s;
+        .down {
+            margin-top: 20px;
 
-            &:hover {
-                background-color: #f39c12;
+            h2 {
+                font-size: 14px;
+                color: #B0B0B0;
             }
+
+            a {
+                font-size: 14px;
+                font-weight: 600;
+                color: #989898;
+            }
+            
         }
-    }
-}
 
-
-button {
-    color: var(--button-color);
-    background-color: var(--button-bg);
-    width: 50%;
-    padding: 15px 0px;
-    align-self: center;    
-    font-size: 16px;
-    border: 0;
-    border-radius: 25px;
-    outline: none;
-    cursor: pointer;
-
-    &:hover{
-        background-color: var(--button-bg-hover);
     }
 }

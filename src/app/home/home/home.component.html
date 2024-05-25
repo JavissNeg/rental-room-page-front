@@ -1,15 +1,31 @@
-<div class="header-content">
-    <div class="header-text">
-        <h1>¡Descubre la comodidad en cada apartamento que ofrecemos!</h1>
-        <a href="#scroll1" class="btn-1">Iniciar</a>
+<section class="cont-padding"> 
+    <div class="up-content">
+        <div class="up-left">
+            <h1>¡Descubre la comodidad en cada apartamento que ofrecemos!</h1>
+            <p>Explora nuestros espacios diseñados para brindarte confort y bienestar en cada detalle.</p>
+            <button>Explorar</button>
+        </div>
+        <div class="up-right">
+            <img src="assets/home/up.png" alt="image">
+        </div>
     </div>
-</div>
+    
+    
+    <div class="header-under">
+        <h2>Conoce la mejor opción para ti</h2>
+        <p>Desde una habitación por día hasta una estancia prolongada, encuentra el lugar de acuerdo a tus necesidades.</p>
+    </div>
+    
+    <div class="rooms">
+        <app-cont-card-property 
+            [properties]="properties">
+        </app-cont-card-property>
+    </div>
 
+</section>
+<section>
+    <div class="down familyBebas">
+        <h3>RENTA TU PROPIEDAD EN RENTALSPACE</h3>
+    </div>
+</section>
 
-<h2>Conoce la mejor opción para ti</h2>
-<div class="rooms">
-    <app-cont-card-property 
-        [properties]="properties"></app-cont-card-property>
-</div>
-
-<app-register *ngIf="sesion"></app-register>

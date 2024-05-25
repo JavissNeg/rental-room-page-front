@@ -1,57 +1,72 @@
-.header-content {
-    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.1)), url(/assets/bg-home.jpg);
-    min-height: 100vh;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
+
+.up-content {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
+    padding: 5% 0;
+
+    .up-left {
+        width: 50%;
+
+        h1 {
+            font-size: 50px;
+            font-weight: 800;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+    }
+
+    .up-right {
+        width: 50%;
+        display: flex;
+        justify-content: flex-end;
+
+        img {
+            width: 80%;
+        }
+    }
 }
 
 
-.header-text {
-    font-family: "Mochiy Pop One", sans-serif;
+.header-under {
     text-align: center;
-}
 
-.header-text h1 {
-    color: var(--h1-color);
-    font-size: 40px;
-    font-weight: 800;
-    margin-bottom: 35px;
-    margin: 80px;
-}
+    h2 {
+        font-size: 35px;
+        font-weight: 600;
+    }
 
-.btn-1{
-    background-color: var(--button-bg);;
-    color: var(--button-color);
-    display: inline-block;
-    padding: 10px 40px;
-    border-radius: 10px;
-
-    &:hover{
-        background-color: var(--button-bg-hover);
+    p {
+        font-size: 20px;
+        margin: 20px 0;
+    
     }
 
 }
 
-
-
 .rooms {
     display: block;
-    padding: 30px;
+    width: 100%;
+    padding: 2% 0 5% 0;
 }
 
 
-h2 {
-    text-align: center;
-    margin-top: 30px;
-    padding: 10px;
-    font-size: 35px;
-    font-size: bold;
-}
+.down {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 400px;
+    background-image: url("../../../assets/home/down.png");
 
+    h3 {
+        font-size: 45px;
+        font-weight: 600;
+    }
+}
 

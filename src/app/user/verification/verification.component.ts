@@ -109,11 +109,6 @@ export class VerificationComponent {
 
 
 		this.login = this.loginService.getData();
-		if (Object.keys(this.login).length === 0) {
-			this.router.navigate(['user/register']);
-			
-		} 
-
 		
 	}
 
@@ -194,25 +189,30 @@ export class VerificationComponent {
 
 	resend(): void {
 		
-		this.loading = true;
-		let dataMail: MailRequestBody = {
-			type: '',
-			mail: this.login.mail,
-			addressee: this.login.first_name,
-		};
+		if(!this.disabledSend) {
 
-		this.mailService.sendMailVerification(dataMail).subscribe( (res) => {
+			this.loading = true;
+			let dataMail: MailRequestBody = {
+				type: '',
+				mail: this.login.mail,
+				addressee: this.login.first_name,
+			};
 
-			if (res.status === 200) {
-				this.disabledSend = true;
+			this.mailService.sendMailVerification(dataMail).subscribe( (res) => {
+
+				if (res.status === 200) {
+					this.disabledSend = true;
+					this.loading = false;
+				}
+
+			},
+			(err) => {
 				this.loading = false;
-			}
+			
+			});
 
-		},
-		(err) => {
-			this.loading = false;
-		
-		});
+		}
+
 	}
 
 	getMessagesErrors(control: string): string {
